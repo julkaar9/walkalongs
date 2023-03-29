@@ -1,0 +1,9 @@
+black
+Django
+django-extensions
+isort
+jupyter
+matplotlib
+mkdocs-material
+numpy
+pandas
