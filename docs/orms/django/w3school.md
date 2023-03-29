@@ -26,7 +26,7 @@ sqlq = sql_raw("SELECT * FROM Customers limit 3")
 
 
 ```python
-ormq = Customers.objects.all().values()[:3]
+ormq = Customers.objects.values()[:3]
 ```
 
     |    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
@@ -49,7 +49,7 @@ Insert the missing statement to get all the columns FROM the Customers table.
 
 ```python
 sqlq =  sql_raw("SELECT * FROM Customers")
-ormq =  Customers.objects.all().values()
+ormq =  Customers.objects.values()
 equal(sqlq, ormq)
 ```
 
@@ -69,7 +69,7 @@ Write a statement that will SELECT the City column FROM the Customers table.
 
 ```py
 sqlq = sql_raw("SELECT city FROM Customers;")
-ormq =  Customers.objects.all().values("city")
+ormq =  Customers.objects.values("city")
 equal(sqlq, ormq)
 ```
 
@@ -88,7 +88,7 @@ Equal ✔️
 
 ```python
 sqlq =  sql_raw("SELECT DISTINCT country FROM Customers;")
-ormq =  Customers.objects.all().values("country").distinct()
+ormq =  Customers.objects.values("country").distinct()
 equal(sqlq, ormq)
 ```
 
@@ -212,7 +212,7 @@ Select all records FROM the Customers table, sort the result alphabetically by t
 
 ```python
 sqlq =  sql_raw("SELECT * FROM Customers ORDER BY city")
-ormq =  Customers.objects.all().order_by("city").values()
+ormq =  Customers.objects.order_by("city").values()
 equal(sqlq, ormq)
 ```
 
@@ -232,7 +232,7 @@ Select all records FROM the Customers table, sort the result reversed alphabetic
 
 ```python
 sqlq =  sql_raw("SELECT * FROM Customers ORDER BY city desc")
-ormq =  Customers.objects.all().order_by("-city").values()
+ormq =  Customers.objects.order_by("-city").values()
 equal(sqlq, ormq)
 ```
 
@@ -253,7 +253,7 @@ first by the column Country, then, by the column City.
 
 ```python
 sqlq =  sql_raw("SELECT * FROM Customers ORDER BY country, city")
-ormq =  Customers.objects.all().order_by("country", "city").values()
+ormq =  Customers.objects.order_by("country", "city").values()
 equal(sqlq, ormq)
 ```
 
@@ -351,7 +351,7 @@ Use an SQL function to SELECT the record with the highest value of the Price col
 
 ```python
 sqlq = sql_raw("SELECT MAX(buyPrice) mn FROM products")
-ormq = dec_to_float(Products.objects.aggregate(mn=Max('buy_price')))
+ormq = Products.objects.aggregate(mn=Max('buy_price'))
 equal(sqlq, ormq)
 ```
 
@@ -364,12 +364,11 @@ Equal ✔️
     
 
 ### Exercise 3
-Use the correct function to return the number of records that have the Price value set to 15.91.
-
+Use the correct function to return the number of records that have the Price value set to 15.91. We will do product_scale = '1:10' instead as I couldn't find any duplicate price.
 
 ```python
-sqlq = sql_raw("SELECT COUNT(*) cnt FROM products WHERE buyPrice=15.91")
-ormq = Products.objects.filter(buy_price=15.91).annotate(cnt=Count("product_code")).values("cnt")
+sqlq = sql_raw("SELECT COUNT(*) cnt FROM products WHERE productScale='1:10'")
+ormq = Products.objects.filter(product_scale='1:10').aggregate(cnt=Count("product_code"))
 equal(sqlq, ormq)
 ```
 
@@ -378,7 +377,7 @@ Equal ✔️
 
 
 ```python
-ormq1 = Products.objects.filter(buy_price=15.91).count()
+ormq1 = Products.objects.filter(product_scale='1:10').count()
 ormq1 = [{'cnt':ormq1}]
 equal(sqlq, ormq1)
 ```
@@ -388,7 +387,7 @@ Equal ✔️
 
     |    |   cnt |
     |---:|------:|
-    |  0 |     1 |
+    |  0 |     6 |
     
 
 ### Exercise 4
@@ -396,8 +395,8 @@ Use an SQL function to calculate the average price of all products.
 
 
 ```python
-sqlq = dec_to_float(sql_raw("SELECT AVG(buyPrice) mean FROM products;"))
-ormq = dec_to_float(Products.objects.aggregate(mean=Avg('buy_price')))
+sqlq = sql_raw("SELECT AVG(buyPrice) mean FROM products;")
+ormq = Products.objects.aggregate(mean=Avg('buy_price'))
 equal(sqlq, ormq)
 ```
 
@@ -414,8 +413,8 @@ Use an SQL function to calculate the sum of all the Price column values in the P
 
 
 ```python
-sqlq = dec_to_float(sql_raw("SELECT SUM(buyPrice) sum_ FROM products;"))
-ormq = dec_to_float(Products.objects.aggregate(sum_=Sum('buy_price')))
+sqlq = sql_raw("SELECT SUM(buyPrice) sum_ FROM products;")
+ormq = Products.objects.aggregate(sum_=Sum('buy_price'))
 equal(sqlq, ormq)
 ```
 
