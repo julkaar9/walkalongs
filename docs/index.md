@@ -10,4 +10,4 @@ You may wish to solve the questions yourself. Clone the repo and install the req
 ### Running the django orm notebooks (Django Shell-plus)
 cd into `server/notebook` Then open the notebook using `python ../manage.py shell_plus --notebook`
 ## List of content currently available
-[1. w3school sql exercises using django]("orms/django/w3school.md")
+[1. w3school sql exercises using django](/orms/django/w3school)

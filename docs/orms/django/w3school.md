@@ -6,7 +6,7 @@ ORM**, They query results are also compared for equality.
 The Insert, Update and Delete queries are not included to keep database consistent.
 
 ## Try it yourself
-The notebook (Django Shell-plus) is located in   
+The notebook (Django Shell-plus) is located in [here](https://github.com/julkaar9/walkalongs/blob/main/server/notebooks/ws3school.ipynb)   
 First cd into the notebook directory `cd server/notebook`  
 Then open the notebook using `python ../manage.py shell_plus --notebook`  
 
@@ -802,7 +802,7 @@ using the CustomerID field in both tables as the relationship between the two ta
 
 `select_related` is unnecessary in these following queries, because we are manually specifying all the fields from
 both tables. However it is kept as a guidance
-see https://docs.djangoproject.com/en/4.2/ref/models/querysets/#select-related
+see [select_related](https://docs.djangoproject.com/en/4.2/ref/models/querysets/#select-related)
 
 
 ```python
