@@ -12,8 +12,9 @@ def admission(fields, i):
 
     row = {
         "model": "customer_db.admissions",
-        "pk": patient_id,
+        "pk": int(i + 1),
         "fields": {
+            "patient_id": patient_id,
             "admission_date": admission_date,
             "discharge_date": discharge_date,
             "diagnosis": diagnosis,
@@ -81,15 +82,15 @@ def province(fields, *args):
     return row
 
 
-with open("province.txt", "r") as f:
+with open("patients.txt", "r") as f:
     data = []
     for i, line in enumerate(f):
         line = line.strip()[1:-2].replace("'", "")
         fields = line.split(",")
-        row = province(fields, i)
+        row = patients(fields, i)
         data.append(row)
 
 json_data = json.dumps(data)
 
-with open("province_data.json", "w") as f:
+with open("patients_data.json", "w") as f:
     f.write(json_data)
