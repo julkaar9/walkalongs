@@ -1,5 +1,6 @@
 from django.db import models
 from .custom_models import *
+from .hospital_models import *
 
 
 class Customers(models.Model):
