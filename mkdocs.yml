@@ -48,6 +48,7 @@ nav:
       - w3school: orms/django/w3school.md
       - sql-practice (easy): orms/django/sql-practice-easy.md
       - sql-practice (medium): orms/django/sql-practice-medium.md
+      - sql-practice (hard): orms/django/sql-practice-hard.md
 # Customization:
 extra:
 #   analytics:
