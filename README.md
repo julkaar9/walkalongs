@@ -1,4 +1,5 @@
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
 # Welcome to walkalongs
 walkalongs are resources and solutions of various technologies
@@ -14,4 +15,5 @@ cd into `server/notebook` Then open the notebook using `python ../manage.py shel
 ## List of content currently available
 [1. w3school sql exercises using django](https://julkaar9.github.io/walkalongs/orms/django/w3school/)  
 [2. sql-practice (easy) exercies using django](https://julkaar9.github.io/walkalongs/orms/django/sql-practice-easy/)  
-[3. sql-practice (medium) exercies using django](https://julkaar9.github.io/walkalongs/orms/django/sql-practice-easy/)  
+[3. sql-practice (medium) exercies using django](https://julkaar9.github.io/walkalongs/orms/django/sql-practice-medium/)  
+[4. sql-practice (hard) exercies using django](https://julkaar9.github.io/walkalongs/orms/django/sql-practice-hard/)  
