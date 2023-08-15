@@ -1,8 +1,15 @@
-from typing import Union
 import re
 from decimal import Decimal
+from typing import Union
+
 import pandas as pd
 from django.db import connection
+from sqlparse import format
+
+
+def print_sql(queryset: any) -> None:
+    formatted = format(str(queryset.query), reindent=True)
+    print(formatted)
 
 
 def orm_to_df(record: any) -> pd.DataFrame:
@@ -35,7 +42,7 @@ def round_(record: Union[float, any], precision=2):
     return record
 
 
-def equal(sqlq, ormq) -> None:
+def equal(sqlq, ormq, log=False) -> None:
     try:
         iter(ormq)
     except:
@@ -54,11 +61,19 @@ def equal(sqlq, ormq) -> None:
         {pattern.sub("_", k).lower(): round_(v) for k, v in dict_.items()}
         for dict_ in sqlq
     ]
-    ormq = [{k: dec_to_float(v) for k, v in dict_.items()} for dict_ in ormq]
+
+    ormq = [
+        {pattern.sub("_", k).lower(): dec_to_float(v) for k, v in dict_.items()}
+        for dict_ in ormq
+    ]
     if sqlq == ormq:
         print("Equal ✔️")
     else:
         print("Unequal ❌")
+        if log:
+            for v1, v2 in zip(sqlq, ormq):
+                if v1 != v2:
+                    print(v1, v2)
 
 
 def dictfetchall(cursor) -> list[dict]:
