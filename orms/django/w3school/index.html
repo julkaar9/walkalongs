@@ -1,0 +1,2180 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Solutions and resources of various technologies that I am currently learning">
+      
+      
+        <meta name="author" content="julkar9">
+      
+      
+        <link rel="canonical" href="https://julkaar9.github.io/orms/django/w3school/">
+      
+      
+        <link rel="prev" href="../../..">
+      
+      
+        <link rel="next" href="../sql-practice-easy/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>w3school - Walkalongs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w3school-sql-exercises-using-django-orm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Walkalongs" class="md-header__button md-logo" aria-label="Walkalongs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Walkalongs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              w3school
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/julkaar9/walkalongs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    julkaar9/walkalongs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  ORMs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Walkalongs" class="md-nav__button md-logo" aria-label="Walkalongs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Walkalongs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/julkaar9/walkalongs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    julkaar9/walkalongs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ORMs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ORMs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Django ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Django ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    w3school
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    w3school
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-yourself" class="md-nav__link">
+    Try it yourself
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-some-basic-queries" class="md-nav__link">
+    Testing some basic queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    SELECT
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    WHERE
+  </a>
+  
+    <nav class="md-nav" aria-label="WHERE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_1" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_1" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_1" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#order-by" class="md-nav__link">
+    ORDER BY
+  </a>
+  
+    <nav class="md-nav" aria-label="ORDER BY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_2" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_2" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_2" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    NULL
+  </a>
+  
+    <nav class="md-nav" aria-label="NULL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_3" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_3" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    FUNCTION
+  </a>
+  
+    <nav class="md-nav" aria-label="FUNCTION">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_4" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_4" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_3" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4_1" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5_1" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#like" class="md-nav__link">
+    LIKE
+  </a>
+  
+    <nav class="md-nav" aria-label="LIKE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_5" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_5" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_4" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4_2" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5_2" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcards" class="md-nav__link">
+    WILDCARDS
+  </a>
+  
+    <nav class="md-nav" aria-label="WILDCARDS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_6" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_6" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_5" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4_3" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    IN
+  </a>
+  
+    <nav class="md-nav" aria-label="IN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_7" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_7" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#between" class="md-nav__link">
+    BETWEEN
+  </a>
+  
+    <nav class="md-nav" aria-label="BETWEEN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_8" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_8" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_6" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    ALIAS
+  </a>
+  
+    <nav class="md-nav" aria-label="ALIAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_9" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_9" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    JOIN
+  </a>
+  
+    <nav class="md-nav" aria-label="JOIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_10" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_10" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_7" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    GROUP BY
+  </a>
+  
+    <nav class="md-nav" aria-label="GROUP BY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_11" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_11" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-practice-easy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sql-practice (easy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-practice-medium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sql-practice (medium)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-practice-hard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sql-practice (hard)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-yourself" class="md-nav__link">
+    Try it yourself
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-some-basic-queries" class="md-nav__link">
+    Testing some basic queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    SELECT
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    WHERE
+  </a>
+  
+    <nav class="md-nav" aria-label="WHERE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_1" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_1" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_1" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#order-by" class="md-nav__link">
+    ORDER BY
+  </a>
+  
+    <nav class="md-nav" aria-label="ORDER BY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_2" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_2" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_2" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    NULL
+  </a>
+  
+    <nav class="md-nav" aria-label="NULL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_3" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_3" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    FUNCTION
+  </a>
+  
+    <nav class="md-nav" aria-label="FUNCTION">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_4" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_4" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_3" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4_1" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5_1" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#like" class="md-nav__link">
+    LIKE
+  </a>
+  
+    <nav class="md-nav" aria-label="LIKE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_5" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_5" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_4" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4_2" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5_2" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcards" class="md-nav__link">
+    WILDCARDS
+  </a>
+  
+    <nav class="md-nav" aria-label="WILDCARDS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_6" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_6" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_5" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4_3" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    IN
+  </a>
+  
+    <nav class="md-nav" aria-label="IN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_7" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_7" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#between" class="md-nav__link">
+    BETWEEN
+  </a>
+  
+    <nav class="md-nav" aria-label="BETWEEN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_8" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_8" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_6" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alias" class="md-nav__link">
+    ALIAS
+  </a>
+  
+    <nav class="md-nav" aria-label="ALIAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_9" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_9" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    JOIN
+  </a>
+  
+    <nav class="md-nav" aria-label="JOIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_10" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_10" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3_7" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    GROUP BY
+  </a>
+  
+    <nav class="md-nav" aria-label="GROUP BY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1_11" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2_11" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="w3school-sql-exercises-using-django-orm">W3SCHOOL SQL exercises using Django ORM</h1>
+<p><a href="https://www.w3schools.com/sql/exercise.asp">https://www.w3schools.com/sql/exercise.asp</a></p>
+<p>This walkalong consists of W3SCHOOL sql exercise solutions written in both <strong>SQL</strong> and <strong>django
+ORM</strong>, They query results are also compared for equality.<br />
+The Insert, Update and Delete queries are not included to keep database consistent.</p>
+<h2 id="try-it-yourself">Try it yourself</h2>
+<p>The notebook (Django Shell-plus) is located in <a href="https://github.com/julkaar9/walkalongs/blob/main/server/notebooks/ws3school.ipynb">here</a> <br />
+First cd into the notebook directory <code>cd server/notebook</code><br />
+Then open the notebook using <code>python ../manage.py shell_plus --notebook</code>  </p>
+<p>(Note the preformatted tables are intentional)</p>
+<h2 id="testing-some-basic-queries">Testing some basic queries</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers limit 3&quot;</span><span class="p">)</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   customerNumber | customerName               | contactLastName   | contactFirstName   | phone        | addressLine1      | city      | state    |   postalCode | country   |
+|---:|-----------------:|:---------------------------|:------------------|:-------------------|:-------------|:------------------|:----------|:---------|-------------:|:----------|
+|  0 |              103 | Atelier graphique          | Schmitt           | Carine             | 40.32.2555   | 54, rue Royale    | Nantes    |          |        44000 | France    |
+|  1 |              112 | Signal Gift Stores         | King              | Jean               | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |        83030 | USA       |
+|  2 |              114 | Australian Collectors, Co. | Ferguson          | Peter              | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |         3004 | Australia |
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:-------------|:------------------|:----------|:---------|--------------:|:----------|
+|  0 |               103 | Atelier graphique          | Schmitt             | Carine               | 40.32.2555   | 54, rue Royale    | Nantes    |          |         44000 | France    |
+|  1 |               112 | Signal Gift Stores         | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |         83030 | USA       |
+|  2 |               114 | Australian Collectors, Co. | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |          3004 | Australia |
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<h2 id="select">SELECT</h2>
+<h3 id="exercise-1">Exercise 1</h3>
+<p>Insert the missing statement to get all the columns FROM the Customers table.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:-------------|:------------------|:----------|:---------|--------------:|:----------|
+|  0 |               103 | Atelier graphique          | Schmitt             | Carine               | 40.32.2555   | 54, rue Royale    | Nantes    |          |         44000 | France    |
+|  1 |               112 | Signal Gift Stores         | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |         83030 | USA       |
+|  2 |               114 | Australian Collectors, Co. | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |          3004 | Australia |
+</code></pre></div>
+<h3 id="exercise-2">Exercise 2</h3>
+<p>Write a statement that will SELECT the City column FROM the Customers table.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT city FROM Customers;&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | city      |
+|---:|:----------|
+|  0 | Nantes    |
+|  1 | Las Vegas |
+|  2 | Melbourne |
+</code></pre></div>
+<h3 id="exercise-3">Exercise 3</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT DISTINCT country FROM Customers;&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | country   |
+|---:|:----------|
+|  0 | France    |
+|  1 | USA       |
+|  2 | Australia |
+</code></pre></div>
+<h2 id="where">WHERE</h2>
+<h3 id="exercise-1_1">Exercise 1</h3>
+<p>Select all records WHERE the City column has the value "Berlin".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers WHERE city=&#39;Berlin&#39;;&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s1">&#39;Berlin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name    | contact_last_name   | contact_first_name   | phone       | address_line1   | city   | state   |   postal_code | country   |
+|---:|------------------:|:-----------------|:--------------------|:---------------------|:------------|:----------------|:-------|:--------|--------------:|:----------|
+|  0 |               307 | Der Hund Imports | Andersen            | Mel                  | 030-0074555 | Obere Str. 57   | Berlin |         |         12209 | Germany   |
+</code></pre></div>
+<h3 id="exercise-2_1">Exercise 2</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers WHERE NOT city=&#39;Berlin&#39;;&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s1">&#39;Berlin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">ormq1</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">&quot;Berlin&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:-------------|:------------------|:----------|:---------|--------------:|:----------|
+|  0 |               103 | Atelier graphique          | Schmitt             | Carine               | 40.32.2555   | 54, rue Royale    | Nantes    |          |         44000 | France    |
+|  1 |               112 | Signal Gift Stores         | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |         83030 | USA       |
+|  2 |               114 | Australian Collectors, Co. | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |          3004 | Australia |
+</code></pre></div>
+<h3 id="exercise-3_1">Exercise 3</h3>
+<p>Select all records WHERE the Customer_number column has the value 320.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers WHERE customerNumber=&#39;320&#39;;&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">customer_number</span><span class="o">=</span><span class="mi">320</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name       | contact_last_name   | contact_first_name   |      phone | address_line1     | city        | state   |   postal_code | country   |
+|---:|------------------:|:--------------------|:--------------------|:---------------------|-----------:|:------------------|:------------|:--------|--------------:|:----------|
+|  0 |               320 | Mini Creations Ltd. | Huang               | Wing                 | 5085559555 | 4575 Hillside Dr. | New Bedford | MA      |         50553 | USA       |
+</code></pre></div>
+<h3 id="exercise-4">Exercise 4</h3>
+<p>Select all records WHERE the City column has the value 'Berlin' and the PostalCode column has the value 12209.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city=&#39;Berlin&#39; AND postalCode=12209;&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">&quot;Berlin&quot;</span><span class="p">,</span> <span class="n">postal_code</span><span class="o">=</span><span class="mi">12209</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> 
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name    | contact_last_name   | contact_first_name   | phone       | address_line1   | city   | state   |   postal_code | country   |
+|---:|------------------:|:-----------------|:--------------------|:---------------------|:------------|:----------------|:-------|:--------|--------------:|:----------|
+|  0 |               307 | Der Hund Imports | Andersen            | Mel                  | 030-0074555 | Obere Str. 57   | Berlin |         |         12209 | Germany   |
+</code></pre></div>
+<h3 id="exercise-5">Exercise 5</h3>
+<p>Select all records WHERE the City column has the value 'Berlin' or 'London'. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers WHERE city=&#39;Berlin&#39; OR city=&#39;London&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">&quot;Berlin&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">&quot;London&quot;</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                  | contact_last_name   | contact_first_name   | phone          | address_line1   | city   | state   | postal_code   | country   |
+|---:|------------------:|:-------------------------------|:--------------------|:---------------------|:---------------|:----------------|:-------|:--------|:--------------|:----------|
+|  0 |               307 | Der Hund Imports               | Andersen            | Mel                  | 030-0074555    | Obere Str. 57   | Berlin |         | 12209         | Germany   |
+|  1 |               324 | Stylish Desk Decors, Co.       | Brown               | Ann                  | (171) 555-0297 | 35 King George  | London |         | WX3 6FW       | UK        |
+|  2 |               489 | Double Decker Gift Stores, Ltd | Smith               | Thomas               | (171) 555-7555 | 120 Hanover Sq. | London |         | WA1 1DP       | UK        |
+</code></pre></div>
+<h2 id="order-by">ORDER BY</h2>
+<h3 id="exercise-1_2">Exercise 1</h3>
+<p>Select all records FROM the Customers table, sort the result alphabetically by the column City.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers ORDER BY city&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name         | contact_last_name   | contact_first_name   | phone           | address_line1    | city      | state   | postal_code   | country     |
+|---:|------------------:|:----------------------|:--------------------|:---------------------|:----------------|:-----------------|:----------|:--------|:--------------|:------------|
+|  0 |               459 | Warburg Exchange      | Ottlieb             | Sven                 | 0241-039123     | Walserweg 21     | Aachen    |         | 52066         | Germany     |
+|  1 |               157 | Diecast Classics Inc. | Leong               | Kelvin               | 2155551555      | 7586 Pompton St. | Allentown | PA      | 70267         | USA         |
+|  2 |               303 | Schuyler Imports      | Schuyler            | Bradley              | +31 20 491 9555 | Kingsfordweg 151 | Amsterdam |         | 1043 GR       | Netherlands |
+</code></pre></div>
+<h3 id="exercise-2_2">Exercise 2</h3>
+<p>Select all records FROM the Customers table, sort the result reversed alphabetically by the column City.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers ORDER BY city desc&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-city&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                 | contact_last_name   | contact_first_name   | phone       | address_line1             | city         | state   |   postal_code | country     |
+|---:|------------------:|:------------------------------|:--------------------|:---------------------|:------------|:--------------------------|:-------------|:--------|--------------:|:------------|
+|  0 |               227 | Heintze Collectables          | Ibsen               | Palle                | 86 21 3555  | Smagsloget 45             | ┼rhus        |         |          8200 | Denmark     |
+|  1 |               319 | Mini Classics                 | Frick               | Steve                | 9145554562  | 3758 North Pendale Street | White Plains | NY      |         24067 | USA         |
+|  2 |               412 | Extreme Desk Decorations, Ltd | McRoy               | Sarah                | 04 499 9555 | 101 Lambton Quay          | Wellington   |         |               | New Zealand |
+</code></pre></div>
+<h3 id="exercise-3_2">Exercise 3</h3>
+<p>Select all records FROM the Customers table, sort the result alphabetically,
+first by the column Country, then, by the column City.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers ORDER BY country, city&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                | contact_last_name   | contact_first_name   | phone           | address_line1          | city         | state    |   postal_code | country   |
+|---:|------------------:|:-----------------------------|:--------------------|:---------------------|:----------------|:-----------------------|:-------------|:---------|--------------:|:----------|
+|  0 |               282 | Souveniers And Things Co.    | Huxley              | Adrian               | +61 2 9495 8555 | Monitor Money Building | Chatswood    | NSW      |          2067 | Australia |
+|  1 |               471 | Australian Collectables, Ltd | Clenahan            | Sean                 | 61-9-3844-6555  | 7 Allen Street         | Glen Waverly | Victoria |          3150 | Australia |
+|  2 |               114 | Australian Collectors, Co.   | Ferguson            | Peter                | 03 9520 4555    | 636 St Kilda Road      | Melbourne    | Victoria |          3004 | Australia |
+</code></pre></div>
+<h2 id="null">NULL</h2>
+<h3 id="exercise-1_3">Exercise 1</h3>
+<p>Select all records FROM the Customers WHERE the PostalCode column is empty.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers WHERE postalCode IS NULL&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">postal_code</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name               | contact_last_name   | contact_first_name   | phone          | address_line1        | city              | state    | postal_code   | country     |
+|---:|------------------:|:----------------------------|:--------------------|:---------------------|:---------------|:---------------------|:------------------|:---------|:--------------|:------------|
+|  0 |               211 | King Kong Collectables, Co. | Gao                 | Mike                 | +852 2251 1555 | Bank of China Tower  | Central Hong Kong |          |               | Hong Kong   |
+|  1 |               323 | Down Under Souveniers, Inc  | Graham              | Mike                 | +64 9 312 5555 | 162-164 Grafton Road | Auckland          |          |               | New Zealand |
+|  2 |               348 | Asian Treasures, Inc.       | McKenna             | Patricia             | 2967 555       | 8 Johnstown Road     | Cork              | Co. Cork |               | Ireland     |
+</code></pre></div>
+<h3 id="exercise-2_3">Exercise 2</h3>
+<p>Select all records FROM the Customers WHERE the PostalCode column is NOT empty.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Customers WHERE postalCode IS NOT NULL&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">postal_code</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">ormq1</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">postal_code</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">ormq2</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">postal_code__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq2</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:-------------|:------------------|:----------|:---------|--------------:|:----------|
+|  0 |               103 | Atelier graphique          | Schmitt             | Carine               | 40.32.2555   | 54, rue Royale    | Nantes    |          |         44000 | France    |
+|  1 |               112 | Signal Gift Stores         | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |         83030 | USA       |
+|  2 |               114 | Australian Collectors, Co. | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |          3004 | Australia |
+</code></pre></div>
+<h2 id="function">FUNCTION</h2>
+<h3 id="exercise-1_4">Exercise 1</h3>
+<p>Use the MIN function to SELECT the record with the smallest value of the Price column.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT MIN(buyPrice) mn FROM products&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">mn</span><span class="o">=</span><span class="n">Min</span><span class="p">(</span><span class="s1">&#39;buy_price&#39;</span><span class="p">))</span> 
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |    mn |
+|---:|------:|
+|  0 | 15.91 |
+</code></pre></div>
+<h3 id="exercise-2_4">Exercise 2</h3>
+<p>Use an SQL function to SELECT the record with the highest value of the Price column.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT MAX(buyPrice) mn FROM products&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">mn</span><span class="o">=</span><span class="n">Max</span><span class="p">(</span><span class="s1">&#39;buy_price&#39;</span><span class="p">))</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |     mn |
+|---:|-------:|
+|  0 | 103.42 |
+</code></pre></div>
+<h3 id="exercise-3_3">Exercise 3</h3>
+<p>Use the correct function to return the number of records that have the Price value set to 15.91. We will do product_scale = '1:10' instead as I couldn't find any duplicate price.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) cnt FROM products WHERE productScale=&#39;1:10&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">product_scale</span><span class="o">=</span><span class="s1">&#39;1:10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;product_code&quot;</span><span class="p">))</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">ormq1</span> <span class="o">=</span> <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">product_scale</span><span class="o">=</span><span class="s1">&#39;1:10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">ormq1</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;cnt&#39;</span><span class="p">:</span><span class="n">ormq1</span><span class="p">}]</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   cnt |
+|---:|------:|
+|  0 |     6 |
+</code></pre></div>
+<h3 id="exercise-4_1">Exercise 4</h3>
+<p>Use an SQL function to calculate the average price of all products.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT AVG(buyPrice) mean FROM products;&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">Avg</span><span class="p">(</span><span class="s1">&#39;buy_price&#39;</span><span class="p">))</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |    mean |
+|---:|--------:|
+|  0 | 54.3952 |
+</code></pre></div>
+<h3 id="exercise-5_1">Exercise 5</h3>
+<p>Use an SQL function to calculate the sum of all the Price column values in the Products table.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT SUM(buyPrice) sum_ FROM products;&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">sum_</span><span class="o">=</span><span class="n">Sum</span><span class="p">(</span><span class="s1">&#39;buy_price&#39;</span><span class="p">))</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |    sum_ |
+|---:|--------:|
+|  0 | 5983.47 |
+</code></pre></div>
+<h2 id="like">LIKE</h2>
+<h3 id="exercise-1_5">Exercise 1</h3>
+<p>Select all records WHERE the value of the City column starts with the letter "a".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city LIKE &#39;a%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__istartswith</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone           | address_line1        | city      | state   | postal_code   | country     |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:----------------|:---------------------|:----------|:--------|:--------------|:------------|
+|  0 |               157 | Diecast Classics Inc.      | Leong               | Kelvin               | 2155551555      | 7586 Pompton St.     | Allentown | PA      | 70267         | USA         |
+|  1 |               303 | Schuyler Imports           | Schuyler            | Bradley              | +31 20 491 9555 | Kingsfordweg 151     | Amsterdam |         | 1043 GR       | Netherlands |
+|  2 |               323 | Down Under Souveniers, Inc | Graham              | Mike                 | +64 9 312 5555  | 162-164 Grafton Road | Auckland  |         |               | New Zealand |
+</code></pre></div>
+<h3 id="exercise-2_5">Exercise 2</h3>
+<p>Select all records WHERE the value of the City column ends with the letter "a".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city LIKE &#39;</span><span class="si">%a</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__iendswith</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name      | contact_last_name   | contact_first_name   | phone         | address_line1          | city     | state   | postal_code   | country   |
+|---:|------------------:|:-------------------|:--------------------|:---------------------|:--------------|:-----------------------|:---------|:--------|:--------------|:----------|
+|  0 |               125 | Havel &amp; Zbyszek Co | Piestrzeniewicz     | Zbyszek              | (26) 642-7555 | ul. Filtrowa 68        | Warszawa |         | 01-012        | Poland    |
+|  1 |               169 | Porto Imports Co.  | de Castro           | Isabel               | (1) 356-5555  | Estrada da sa·de n. 58 | Lisboa   |         | 1756          | Portugal  |
+|  2 |               205 | Toys4GrownUps.com  | Young               | Julie                | 6265557265    | 78934 Hillside Dr.     | Pasadena | CA      | 90003         | USA       |
+</code></pre></div>
+<h3 id="exercise-3_4">Exercise 3</h3>
+<p>Select all records WHERE the value of the City column contains the letter "a".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city LIKE &#39;</span><span class="si">%a</span><span class="s2">%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__icontains</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name      | contact_last_name   | contact_first_name   | phone      | address_line1                | city      | state   |   postal_code | country   |
+|---:|------------------:|:-------------------|:--------------------|:---------------------|:-----------|:-----------------------------|:----------|:--------|--------------:|:----------|
+|  0 |               103 | Atelier graphique  | Schmitt             | Carine               | 40.32.2555 | 54, rue Royale               | Nantes    |         |         44000 | France    |
+|  1 |               112 | Signal Gift Stores | King                | Jean                 | 7025551838 | 8489 Strong St.              | Las Vegas | NV      |         83030 | USA       |
+|  2 |               119 | La Rochelle Gifts  | Labrune             | Janine               | 40.67.8555 | 67, rue des Cinquante Otages | Nantes    |         |         44000 | France    |
+</code></pre></div>
+<h3 id="exercise-4_2">Exercise 4</h3>
+<p>Select all records WHERE the value of the City column starts with letter "a" and ends with the letter "b".
+(Note no such rows exists, so we will use L%n</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city LIKE &#39;L%n&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">city__istartswith</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Q</span><span class="p">(</span><span class="n">city__endswith</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">ormq1</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^L.*n$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                  | contact_last_name   | contact_first_name   | phone          | address_line1      | city   | state   | postal_code   | country   |
+|---:|------------------:|:-------------------------------|:--------------------|:---------------------|:---------------|:-------------------|:-------|:--------|:--------------|:----------|
+|  0 |               146 | Saveley &amp; Henriot, Co.         | Saveley             | Mary                 | 78.32.5555     | 2, rue du Commerce | Lyon   |         | 69004         | France    |
+|  1 |               324 | Stylish Desk Decors, Co.       | Brown               | Ann                  | (171) 555-0297 | 35 King George     | London |         | WX3 6FW       | UK        |
+|  2 |               489 | Double Decker Gift Stores, Ltd | Smith               | Thomas               | (171) 555-7555 | 120 Hanover Sq.    | London |         | WA1 1DP       | UK        |
+</code></pre></div>
+<h3 id="exercise-5_2">Exercise 5</h3>
+<p>Select all records WHERE the value of the City column does NOT start with the letter "a".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city NOT LIKE &#39;a%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">city__istartswith</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">ormq1</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^[^aA]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">ormq2</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">city__istartswith</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq2</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:-------------|:------------------|:----------|:---------|--------------:|:----------|
+|  0 |               103 | Atelier graphique          | Schmitt             | Carine               | 40.32.2555   | 54, rue Royale    | Nantes    |          |         44000 | France    |
+|  1 |               112 | Signal Gift Stores         | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |         83030 | USA       |
+|  2 |               114 | Australian Collectors, Co. | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |          3004 | Australia |
+</code></pre></div>
+<h2 id="wildcards">WILDCARDS</h2>
+<h3 id="exercise-1_6">Exercise 1</h3>
+<p>Select all records WHERE the second letter of the City is an "a".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city LIKE &#39;_a%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^.[aA].*$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name      | contact_last_name   | contact_first_name   | phone      | address_line1                | city      | state   |   postal_code | country   |
+|---:|------------------:|:-------------------|:--------------------|:---------------------|:-----------|:-----------------------------|:----------|:--------|--------------:|:----------|
+|  0 |               103 | Atelier graphique  | Schmitt             | Carine               | 40.32.2555 | 54, rue Royale               | Nantes    |         |         44000 | France    |
+|  1 |               112 | Signal Gift Stores | King                | Jean                 | 7025551838 | 8489 Strong St.              | Las Vegas | NV      |         83030 | USA       |
+|  2 |               119 | La Rochelle Gifts  | Labrune             | Janine               | 40.67.8555 | 67, rue des Cinquante Otages | Nantes    |         |         44000 | France    |
+</code></pre></div>
+<h3 id="exercise-2_6">Exercise 2</h3>
+<p>Select all records WHERE the first letter of the City is an "a" or a "c" or an "s".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># sqlq =  Customers.objects.raw(&quot;SELECT * FROM customers WHERE city LIKE &#39;[acs]%&#39;&quot;)</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE CITY LIKE &#39;a%&#39; OR CITY LIKE &#39;c%&#39; OR CITY LIKE &#39;s%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">query</span> <span class="o">=</span> <span class="n">Q</span><span class="p">()</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">]:</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    <span class="n">query</span> <span class="o">=</span> <span class="n">query</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="n">city__istartswith</span><span class="o">=</span><span class="n">ch</span><span class="p">)</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span> 
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">ormq1</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^[acsACS].*$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                | contact_last_name   | contact_first_name   | phone      | address_line1             | city          | state   |   postal_code | country   |
+|---:|------------------:|:-----------------------------|:--------------------|:---------------------|:-----------|:--------------------------|:--------------|:--------|--------------:|:----------|
+|  0 |               121 | Baane Mini Imports           | Bergulfsen          | Jonas                | 07-98 9555 | Erling Skakkes gate 78    | Stavern       |         |          4110 | Norway    |
+|  1 |               124 | Mini Gifts Distributors Ltd. | Nelson              | Susan                | 4155551450 | 5677 Strong St.           | San Rafael    | CA      |         97562 | USA       |
+|  2 |               129 | Mini Wheels Co.              | Murphy              | Julie                | 6505555787 | 5557 North Pendale Street | San Francisco | CA      |         94217 | USA       |
+</code></pre></div>
+<h3 id="exercise-3_5">Exercise 3</h3>
+<p>Select all records WHERE the first letter of the City starts with anything FROM an "a" to an "f".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># sqlq =  Customers.objects.raw(&quot;SELECT * FROM customers WHERE city LIKE &#39;[a-f]%&#39;&quot;) # doesnt work in sqlite</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE city REGEXP &#39;^[a-fA-F].*$&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">city__regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;^[a-fA-F].*$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name         | contact_last_name   | contact_first_name   | phone             | address_line1     | city       | state   |   postal_code | country   |
+|---:|------------------:|:----------------------|:--------------------|:---------------------|:------------------|:------------------|:-----------|:--------|--------------:|:----------|
+|  0 |               128 | Blauer See Auto, Co.  | Keitel              | Roland               | +49 69 66 90 2555 | Lyonerstr. 34     | Frankfurt  |         |         60528 | Germany   |
+|  1 |               157 | Diecast Classics Inc. | Leong               | Kelvin               | 2155551555        | 7586 Pompton St.  | Allentown  | PA      |         70267 | USA       |
+|  2 |               161 | Technics Stores Inc.  | Hashimoto           | Juri                 | 6505556809        | 9408 Furth Circle | Burlingame | CA      |         94217 | USA       |
+</code></pre></div>
+<h3 id="exercise-4_3">Exercise 4</h3>
+<p>Select all records WHERE the first letter of the City is NOT an "a" or a "c" or an "f".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># sqlq =  Customers.objects.raw(&quot;SELECT * FROM customers WHERE city LIKE &#39;[!acf]%&#39;&quot;)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE CITY NOT LIKE &#39;a%&#39; OR CITY NOT LIKE &#39;c%&#39; OR CITY NOT LIKE &#39;s%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">query</span> <span class="o">=</span> <span class="n">Q</span><span class="p">()</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]:</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="n">query</span> <span class="o">=</span> <span class="n">query</span> <span class="o">|</span> <span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">city__istartswith</span><span class="o">=</span><span class="n">ch</span><span class="p">)</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name              | contact_last_name   | contact_first_name   | phone        | address_line1     | city      | state    |   postal_code | country   |
+|---:|------------------:|:---------------------------|:--------------------|:---------------------|:-------------|:------------------|:----------|:---------|--------------:|:----------|
+|  0 |               103 | Atelier graphique          | Schmitt             | Carine               | 40.32.2555   | 54, rue Royale    | Nantes    |          |         44000 | France    |
+|  1 |               112 | Signal Gift Stores         | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas | NV       |         83030 | USA       |
+|  2 |               114 | Australian Collectors, Co. | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne | Victoria |          3004 | Australia |
+</code></pre></div>
+<h2 id="in">IN</h2>
+<h3 id="exercise-1_7">Exercise 1</h3>
+<p>Use the IN operator to SELECT all the records WHERE Country is either "Norway" or "France".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE country IN (&#39;Norway&#39;, &#39;France&#39;)&quot;</span><span class="p">)</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">country__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Norway&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name      | contact_last_name   | contact_first_name   | phone      | address_line1                | city    | state   |   postal_code | country   |
+|---:|------------------:|:-------------------|:--------------------|:---------------------|:-----------|:-----------------------------|:--------|:--------|--------------:|:----------|
+|  0 |               103 | Atelier graphique  | Schmitt             | Carine               | 40.32.2555 | 54, rue Royale               | Nantes  |         |         44000 | France    |
+|  1 |               119 | La Rochelle Gifts  | Labrune             | Janine               | 40.67.8555 | 67, rue des Cinquante Otages | Nantes  |         |         44000 | France    |
+|  2 |               121 | Baane Mini Imports | Bergulfsen          | Jonas                | 07-98 9555 | Erling Skakkes gate 78       | Stavern |         |          4110 | Norway    |
+</code></pre></div>
+<h3 id="exercise-2_7">Exercise 2</h3>
+<p>Use the IN operator to SELECT all the records WHERE Country is NOT "Norway" and NOT "France".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM customers WHERE country NOT IN (&#39;Norway&#39;, &#39;France&#39;)&quot;</span><span class="p">)</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">country__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Norway&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">ormq1</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">country__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Norway&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                | contact_last_name   | contact_first_name   | phone        | address_line1     | city       | state    |   postal_code | country   |
+|---:|------------------:|:-----------------------------|:--------------------|:---------------------|:-------------|:------------------|:-----------|:---------|--------------:|:----------|
+|  0 |               112 | Signal Gift Stores           | King                | Jean                 | 7025551838   | 8489 Strong St.   | Las Vegas  | NV       |         83030 | USA       |
+|  1 |               114 | Australian Collectors, Co.   | Ferguson            | Peter                | 03 9520 4555 | 636 St Kilda Road | Melbourne  | Victoria |          3004 | Australia |
+|  2 |               124 | Mini Gifts Distributors Ltd. | Nelson              | Susan                | 4155551450   | 5677 Strong St.   | San Rafael | CA       |         97562 | USA       |
+</code></pre></div>
+<h2 id="between">BETWEEN</h2>
+<h3 id="exercise-1_8">Exercise 1</h3>
+<p>Use the BETWEEN operator to SELECT all the records WHERE the value of the Price column is between 10 and 20.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM products WHERE buyPrice BETWEEN 10 AND 20;&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">buy_price__gte</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Q</span><span class="p">(</span><span class="n">buy_price__lte</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span> 
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | product_code   | product_name                        | product_scale   | product_vendor           | product_description                                                                                                                                                                                                                                  |   quantity_in_stock |   buy_price |   msrp |
+|---:|:---------------|:------------------------------------|:----------------|:-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------:|------------:|-------:|
+|  0 | S24_2840       | 1958 Chevy Corvette Limited Edition | 1:24            | Carousel DieCast Legends | The operating parts of this 1958 Chevy Corvette Limited Edition are particularly delicate due to their precise scale and require special care and attention. Features rotating wheels, working streering, opening doors and trunk. Color dark green. |                2542 |       15.91 |  35.36 |
+|  1 | S24_2972       | 1982 Lamborghini Diablo             | 1:24            | Second Gear Diecast      | This replica features opening doors, superb detail and craftsmanship, working steering system, opening forward compartment, opening rear trunk with removable spare, 4 wheel independent spring suspension as well as factory baked enamel finish.   |                7723 |       16.24 |  37.76 |
+</code></pre></div>
+<h3 id="exercise-2_8">Exercise 2</h3>
+<p>Use the BETWEEN operator to select all the records where the value of the Price column is NOT between 10 and 20.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM products WHERE buyPrice NOT BETWEEN 10 AND 20;&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">buy_price__gte</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">buy_price__lte</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span> 
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | product_code   | product_name                          | product_scale   | product_vendor           | product_description                                                                                                                                                                                                                                                                                                                                                                                     |   quantity_in_stock |   buy_price |   msrp |
+|---:|:---------------|:--------------------------------------|:----------------|:-------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------:|------------:|-------:|
+|  0 | S10_1678       | 1969 Harley Davidson Ultimate Chopper | 1:10            | Min Lin Diecast          | This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention.                                                                                                                                                                  |                7933 |       48.81 |  95.7  |
+|  1 | S10_1949       | 1952 Alpine Renault 1300              | 1:10            | Classic Metal Creations  | Turnable front wheels; steering function; detailed interior; detailed engine; opening hood; opening trunk; opening doors; and detailed chassis.                                                                                                                                                                                                                                                         |                7305 |       98.58 | 214.3  |
+|  2 | S10_2016       | 1996 Moto Guzzi 1100i                 | 1:10            | Highway 66 Mini Classics | Official Moto Guzzi logos and insignias, saddle bags located on side of motorcycle, detailed engine, working steering, working suspension, two leather seats, luggage rack, dual exhaust pipes, small saddle bag located on handle bars, two-tone paint with chrome accents, superior die-cast detail , rotating wheels , working kick stand, diecast metal with plastic parts and baked enamel finish. |                6625 |       68.99 | 118.94 |
+</code></pre></div>
+<h3 id="exercise-3_6">Exercise 3</h3>
+<p>Use the BETWEEN operator to SELECT all the records
+WHERE the value of the ProductName column is alphabetically between '1904 Buick Runabout' and '1928 Mercedes-Benz SSK'.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM products WHERE productName BETWEEN &#39;1904 Buick Runabout&#39; AND &#39;1928 Mercedes-Benz SSK&#39;;&quot;</span><span class="p">)</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Products</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">product_name__gte</span><span class="o">=</span><span class="s1">&#39;1904 Buick Runabout&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Q</span><span class="p">(</span><span class="n">product_name__lte</span><span class="o">=</span><span class="s1">&#39;1928 Mercedes-Benz SSK&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span> 
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | product_code   | product_name             | product_scale   | product_vendor            | product_description                                                                                                                                                                                                                                                                                       |   quantity_in_stock |   buy_price |   msrp |
+|---:|:---------------|:-------------------------|:----------------|:--------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------:|------------:|-------:|
+|  0 | S18_1749       | 1917 Grand Touring Sedan | 1:18            | Welly Diecast Productions | This 1:18 scale replica of the 1917 Grand Touring car has all the features you would expect from museum quality reproductions: all four doors and bi-fold hood opening, detailed engine and instrument panel, chrome-look trim, and tufted upholstery, all topped off with a factory baked-enamel finish. |                2724 |       86.7  | 170    |
+|  1 | S18_2248       | 1911 Ford Town Car       | 1:18            | Motor City Art Classics   | Features opening hood, opening doors, opening trunk, wide white wall tires, front door arm rests, working steering system.                                                                                                                                                                                |                 540 |       33.3  |  60.54 |
+|  2 | S18_2432       | 1926 Ford Fire Engine    | 1:18            | Carousel DieCast Legends  | Gleaming red handsome appearance. Everything is here the fire hoses, ladder, axes, bells, lanterns, ready to fight any inferno.                                                                                                                                                                           |                2018 |       24.92 |  60.77 |
+</code></pre></div>
+<h2 id="alias">ALIAS</h2>
+<h3 id="exercise-1_9">Exercise 1</h3>
+<p>When displaying the Customers table, make an ALIAS of the PostalCode column, the column should be called Pno instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT customerName, addressLine1, postalCode pno FROM customers;&quot;</span><span class="p">)</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;customer_name&quot;</span><span class="p">,</span> <span class="s2">&quot;address_line1&quot;</span><span class="p">,</span> <span class="n">pno</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;postal_code&quot;</span><span class="p">))</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | customer_name              | address_line1     |   pno |
+|---:|:---------------------------|:------------------|------:|
+|  0 | Atelier graphique          | 54, rue Royale    | 44000 |
+|  1 | Signal Gift Stores         | 8489 Strong St.   | 83030 |
+|  2 | Australian Collectors, Co. | 636 St Kilda Road |  3004 |
+</code></pre></div>
+<h3 id="exercise-2_9">Exercise 2</h3>
+<p>When displaying the Customers table, refer to the table as Consumers instead of Customers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="c1"># Couldn&#39;t find an answer</span>
+</code></pre></div>
+<h2 id="join">JOIN</h2>
+<h3 id="exercise-1_10">Exercise 1</h3>
+<p>Insert the missing parts in the JOIN clause to join the two tables Orders and Customers,
+using the CustomerID field in both tables as the relationship between the two tables.</p>
+<p><code>select_related</code> is unnecessary in these following queries, because we are manually specifying all the fields from
+both tables. However it is kept as a guidance
+see <a href="https://docs.djangoproject.com/en/4.2/ref/models/querysets/#select-related">select_related</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="s2">Select * FROM orders o</span>
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="s2">LEFT OUTER JOIN customers c</span>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="s2">on o.customerNumber == c.customerNumber</span>
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(326, 16)
+|    |   orderNumber | orderDate   | requiredDate   | shippedDate   | status   | comments               |   customerNumber | customerName                 | contactLastName   | contactFirstName   | phone             | addressLine1             | city      | state   |   postalCode | country   |
+|---:|--------------:|:------------|:---------------|:--------------|:---------|:-----------------------|-----------------:|:-----------------------------|:------------------|:-------------------|:------------------|:-------------------------|:----------|:--------|-------------:|:----------|
+|  0 |         10100 | 2003-01-06  | 2003-01-13     | 2003-01-10    | Shipped  |                        |              363 | Online Diecast Creations Co. | Young             | Dorothy            | 6035558647        | 2304 Long Airport Avenue | Nashua    | NH      |        62005 | USA       |
+|  1 |         10101 | 2003-01-09  | 2003-01-18     | 2003-01-11    | Shipped  | Check on availability. |              128 | Blauer See Auto, Co.         | Keitel            | Roland             | +49 69 66 90 2555 | Lyonerstr. 34            | Frankfurt |         |        60528 | Germany   |
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">def</span> <span class="nf">get_all_join_fields</span><span class="p">(</span><span class="n">lh_class</span><span class="p">,</span> <span class="n">rh_class</span><span class="p">,</span> <span class="n">fk</span><span class="p">):</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="n">lh_class_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">lh_class</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">local_fields</span><span class="p">]</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>    <span class="n">rh_class_fields</span> <span class="o">=</span>  <span class="p">{</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">F</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fk</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">rh_class</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">local_fields</span> <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lh_class_fields</span><span class="p">}</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>    <span class="k">return</span> <span class="n">lh_class_fields</span><span class="p">,</span> <span class="n">rh_class_fields</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">lh_fields</span><span class="p">,</span> <span class="n">rh_field_dict</span> <span class="o">=</span> <span class="n">get_all_join_fields</span><span class="p">(</span><span class="n">Orders</span><span class="p">,</span> <span class="n">Customers</span><span class="p">,</span> <span class="s1">&#39;customer_number&#39;</span><span class="p">)</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="c1"># this will perform an inner join because customer_number is non nullable</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Orders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;customer_number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span> <span class="o">*</span><span class="n">lh_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">rh_field_dict</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   order_number | order_date   | required_date   | shipped_date   | status   | comments               |   customer_number | customer_name                | contact_last_name   | contact_first_name   | phone             | address_line1            | city      | state   |   postal_code | country   |
+|---:|---------------:|:-------------|:----------------|:---------------|:---------|:-----------------------|------------------:|:-----------------------------|:--------------------|:---------------------|:------------------|:-------------------------|:----------|:--------|--------------:|:----------|
+|  0 |          10100 | 2003-01-06   | 2003-01-13      | 2003-01-10     | Shipped  |                        |               363 | Online Diecast Creations Co. | Young               | Dorothy              | 6035558647        | 2304 Long Airport Avenue | Nashua    | NH      |         62005 | USA       |
+|  1 |          10101 | 2003-01-09   | 2003-01-18      | 2003-01-11     | Shipped  | Check on availability. |               128 | Blauer See Auto, Co.         | Keitel              | Roland               | +49 69 66 90 2555 | Lyonerstr. 34            | Frankfurt |         |         60528 | Germany   |
+|  2 |          10102 | 2003-01-10   | 2003-01-18      | 2003-01-14     | Shipped  |                        |               181 | Vitachrome Inc.              | Frick               | Michael              | 2125551500        | 2678 Kingston Rd.        | NYC       | NY      |         10022 | USA       |
+</code></pre></div>
+<h3 id="exercise-2_10">Exercise 2</h3>
+<p>Choose the correct JOIN clause to SELECT all records FROM the two tables WHERE there is a match in both tables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="s2">Select * FROM orders o</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="s2">INNER JOIN customers c</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="s2">on o.customerNumber == c.customerNumber</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(326, 16)
+|    |   orderNumber | orderDate   | requiredDate   | shippedDate   | status   | comments               |   customerNumber | customerName                 | contactLastName   | contactFirstName   | phone             | addressLine1             | city      | state   |   postalCode | country   |
+|---:|--------------:|:------------|:---------------|:--------------|:---------|:-----------------------|-----------------:|:-----------------------------|:------------------|:-------------------|:------------------|:-------------------------|:----------|:--------|-------------:|:----------|
+|  0 |         10100 | 2003-01-06  | 2003-01-13     | 2003-01-10    | Shipped  |                        |              363 | Online Diecast Creations Co. | Young             | Dorothy            | 6035558647        | 2304 Long Airport Avenue | Nashua    | NH      |        62005 | USA       |
+|  1 |         10101 | 2003-01-09  | 2003-01-18     | 2003-01-11    | Shipped  | Check on availability. |              128 | Blauer See Auto, Co.         | Keitel            | Roland             | +49 69 66 90 2555 | Lyonerstr. 34            | Frankfurt |         |        60528 | Germany   |
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">lh_fields</span><span class="p">,</span> <span class="n">rh_field_dict</span> <span class="o">=</span> <span class="n">get_all_join_fields</span><span class="p">(</span><span class="n">Orders</span><span class="p">,</span> <span class="n">Customers</span><span class="p">,</span> <span class="s1">&#39;customer_number&#39;</span><span class="p">)</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="n">ormq</span> <span class="o">=</span>  <span class="n">Orders</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">customer_number__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>\
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s1">&#39;customer_number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span> <span class="o">*</span><span class="n">lh_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">rh_field_dict</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   order_number | order_date   | required_date   | shipped_date   | status   | comments               |   customer_number | customer_name                | contact_last_name   | contact_first_name   | phone             | address_line1            | city      | state   |   postal_code | country   |
+|---:|---------------:|:-------------|:----------------|:---------------|:---------|:-----------------------|------------------:|:-----------------------------|:--------------------|:---------------------|:------------------|:-------------------------|:----------|:--------|--------------:|:----------|
+|  0 |          10100 | 2003-01-06   | 2003-01-13      | 2003-01-10     | Shipped  |                        |               363 | Online Diecast Creations Co. | Young               | Dorothy              | 6035558647        | 2304 Long Airport Avenue | Nashua    | NH      |         62005 | USA       |
+|  1 |          10101 | 2003-01-09   | 2003-01-18      | 2003-01-11     | Shipped  | Check on availability. |               128 | Blauer See Auto, Co.         | Keitel              | Roland               | +49 69 66 90 2555 | Lyonerstr. 34            | Frankfurt |         |         60528 | Germany   |
+|  2 |          10102 | 2003-01-10   | 2003-01-18      | 2003-01-14     | Shipped  |                        |               181 | Vitachrome Inc.              | Frick               | Michael              | 2125551500        | 2678 Kingston Rd.        | NYC       | NY      |         10022 | USA       |
+</code></pre></div>
+<h3 id="exercise-3_7">Exercise 3</h3>
+<p>Choose the correct JOIN clause to SELECT all the records FROM the Customers table plus all the matches in the Orders table.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="s2">Select * FROM orders o</span>
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="s2">RIGHT OUTER JOIN customers c</span>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="s2">on c.customerNumber == o.customerNumber</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a><span class="n">sqlq</span> <span class="o">=</span>  <span class="n">sql_raw</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(350, 16)
+|    |   orderNumber | orderDate   | requiredDate   | shippedDate   | status   | comments               |   customerNumber | customerName                 | contactLastName   | contactFirstName   | phone             | addressLine1             | city      | state   |   postalCode | country   |
+|---:|--------------:|:------------|:---------------|:--------------|:---------|:-----------------------|-----------------:|:-----------------------------|:------------------|:-------------------|:------------------|:-------------------------|:----------|:--------|-------------:|:----------|
+|  0 |         10100 | 2003-01-06  | 2003-01-13     | 2003-01-10    | Shipped  |                        |              363 | Online Diecast Creations Co. | Young             | Dorothy            | 6035558647        | 2304 Long Airport Avenue | Nashua    | NH      |        62005 | USA       |
+|  1 |         10101 | 2003-01-09  | 2003-01-18     | 2003-01-11    | Shipped  | Check on availability. |              128 | Blauer See Auto, Co.         | Keitel            | Roland             | +49 69 66 90 2555 | Lyonerstr. 34            | Frankfurt |         |        60528 | Germany   |
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1"># Couldnt find any proper right join in djorm</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="n">lh_fields</span><span class="p">,</span> <span class="n">rh_field_dict</span> <span class="o">=</span> <span class="n">get_all_join_fields</span><span class="p">(</span><span class="n">Customers</span><span class="p">,</span> <span class="n">Orders</span> <span class="p">,</span><span class="s1">&#39;orders&#39;</span><span class="p">)</span>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a><span class="c1"># select_related doesn&#39;t work for reverse relationships</span>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s1">&#39;orders__order_number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">asc</span><span class="p">(</span><span class="n">nulls_last</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span> <span class="o">*</span><span class="n">lh_fields</span><span class="p">,</span> <span class="o">**</span><span class="n">rh_field_dict</span><span class="p">)</span>
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a><span class="n">ormdf</span> <span class="o">=</span> <span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   customer_number | customer_name                | contact_last_name   | contact_first_name   | phone             | address_line1            | city      | state   |   postal_code | country   |   order_number | order_date   | required_date   | shipped_date   | status   | comments               |
+|---:|------------------:|:-----------------------------|:--------------------|:---------------------|:------------------|:-------------------------|:----------|:--------|--------------:|:----------|---------------:|:-------------|:----------------|:---------------|:---------|:-----------------------|
+|  0 |               363 | Online Diecast Creations Co. | Young               | Dorothy              | 6035558647        | 2304 Long Airport Avenue | Nashua    | NH      |         62005 | USA       |          10100 | 2003-01-06   | 2003-01-13      | 2003-01-10     | Shipped  |                        |
+|  1 |               128 | Blauer See Auto, Co.         | Keitel              | Roland               | +49 69 66 90 2555 | Lyonerstr. 34            | Frankfurt |         |         60528 | Germany   |          10101 | 2003-01-09   | 2003-01-18      | 2003-01-11     | Shipped  | Check on availability. |
+|  2 |               181 | Vitachrome Inc.              | Frick               | Michael              | 2125551500        | 2678 Kingston Rd.        | NYC       | NY      |         10022 | USA       |          10102 | 2003-01-10   | 2003-01-18      | 2003-01-14     | Shipped  |                        |
+</code></pre></div>
+<h2 id="group-by">GROUP BY</h2>
+<h3 id="exercise-1_11">Exercise 1</h3>
+<p>List the number of customers in each country.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT count(customerNumber) as cnt FROM  customers GROUP BY country;&quot;</span><span class="p">)</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;cnt&quot;</span><span class="p">)</span>
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    |   cnt |
+|---:|------:|
+|  0 |     5 |
+|  1 |     2 |
+|  2 |     2 |
+</code></pre></div>
+<h3 id="exercise-2_11">Exercise 2</h3>
+<p>List the number of customers in each country, ordered by the country with the most customers first.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="s2">&quot;SELECT country, count(customerNumber) as cnt FROM customers GROUP BY country ORDER BY count(customerNumber) desc;&quot;</span><span class="p">)</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Customers</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-cnt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;cnt&quot;</span><span class="p">)</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span> 
+</code></pre></div>
+<p>Equal ✔️</p>
+<div class="highlight"><pre><span></span><code>|    | country   |   cnt |
+|---:|:----------|------:|
+|  0 | USA       |    36 |
+|  1 | Germany   |    13 |
+|  2 | France    |    12 |
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Md Julkarnaeen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/julkaar9/walkalongs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2220 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Solutions and resources of various technologies that I am currently learning">
+      
+      
+        <meta name="author" content="julkar9">
+      
+      
+        <link rel="canonical" href="https://julkaar9.github.io/orms/django/sql-practice-medium/">
+      
+      
+        <link rel="prev" href="../sql-practice-easy/">
+      
+      
+        <link rel="next" href="../sql-practice-hard/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>sql-practice (medium) - Walkalongs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sql-practice-medium-exercises-using-django-orm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Walkalongs" class="md-header__button md-logo" aria-label="Walkalongs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Walkalongs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              sql-practice (medium)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/julkaar9/walkalongs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    julkaar9/walkalongs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../w3school/" class="md-tabs__link">
+          
+  
+    
+  
+  ORMs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Walkalongs" class="md-nav__button md-logo" aria-label="Walkalongs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Walkalongs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/julkaar9/walkalongs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    julkaar9/walkalongs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ORMs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ORMs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Django ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Django ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../w3school/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    w3school
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-practice-easy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sql-practice (easy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    sql-practice (medium)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    sql-practice (medium)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-yourself" class="md-nav__link">
+    Try it yourself
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-1" class="md-nav__link">
+    Medium 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-2" class="md-nav__link">
+    Medium 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-3" class="md-nav__link">
+    Medium 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-4" class="md-nav__link">
+    Medium 4
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-5" class="md-nav__link">
+    Medium 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-6" class="md-nav__link">
+    Medium 6
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-7" class="md-nav__link">
+    Medium 7
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-8" class="md-nav__link">
+    Medium 8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-9" class="md-nav__link">
+    Medium 9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-10" class="md-nav__link">
+    Medium 10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-11" class="md-nav__link">
+    Medium 11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-12" class="md-nav__link">
+    Medium 12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-13" class="md-nav__link">
+    Medium 13
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-14" class="md-nav__link">
+    Medium 14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-15" class="md-nav__link">
+    Medium 15
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-16" class="md-nav__link">
+    Medium 16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-17" class="md-nav__link">
+    Medium 17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-18" class="md-nav__link">
+    Medium 18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-19" class="md-nav__link">
+    Medium 19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-20" class="md-nav__link">
+    Medium 20
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-21" class="md-nav__link">
+    Medium 21
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-22" class="md-nav__link">
+    Medium 22
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-23" class="md-nav__link">
+    Medium 23
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-24" class="md-nav__link">
+    Medium 24
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-25" class="md-nav__link">
+    Medium 25
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-practice-hard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sql-practice (hard)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-yourself" class="md-nav__link">
+    Try it yourself
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-1" class="md-nav__link">
+    Medium 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-2" class="md-nav__link">
+    Medium 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-3" class="md-nav__link">
+    Medium 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-4" class="md-nav__link">
+    Medium 4
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-5" class="md-nav__link">
+    Medium 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-6" class="md-nav__link">
+    Medium 6
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-7" class="md-nav__link">
+    Medium 7
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-8" class="md-nav__link">
+    Medium 8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-9" class="md-nav__link">
+    Medium 9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-10" class="md-nav__link">
+    Medium 10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-11" class="md-nav__link">
+    Medium 11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-12" class="md-nav__link">
+    Medium 12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-13" class="md-nav__link">
+    Medium 13
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-14" class="md-nav__link">
+    Medium 14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-15" class="md-nav__link">
+    Medium 15
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-16" class="md-nav__link">
+    Medium 16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-17" class="md-nav__link">
+    Medium 17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-18" class="md-nav__link">
+    Medium 18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-19" class="md-nav__link">
+    Medium 19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-20" class="md-nav__link">
+    Medium 20
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-21" class="md-nav__link">
+    Medium 21
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-22" class="md-nav__link">
+    Medium 22
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-23" class="md-nav__link">
+    Medium 23
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-24" class="md-nav__link">
+    Medium 24
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medium-25" class="md-nav__link">
+    Medium 25
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sql-practice-medium-exercises-using-django-orm">SQL-PRACTICE medium exercises using Django ORM</h1>
+<p><a href="https://www.sql-practice.com/">https://www.sql-practice.com/</a></p>
+<p>This walkalong consists of medium questions and their solutions from sql-practice.com, written in both <strong>SQL</strong> and <strong>django
+ORM</strong>, They query results are also compared for equality.<br />
+Insert, Update and Delete queries are not included to keep database consistent.</p>
+<h2 id="try-it-yourself">Try it yourself</h2>
+<p>The notebook (Django Shell-plus) is located in <a href="https://github.com/julkaar9/walkalongs/blob/main/server/notebooks/sql-practice-medium-practice.ipynb">here</a> <br />
+First cd into the notebook directory <code>cd server/notebook</code><br />
+Then open the notebook using <code>python ../manage.py shell_plus --notebook</code>  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DJANGO_ALLOW_ASYNC_UNSAFE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">sqlparse</span> <span class="kn">import</span> <span class="nb">format</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">Q</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">F</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">Case</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">When</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">Count</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">Func</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">Min</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">Max</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">Sum</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">Avg</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">Value</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">OuterRef</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">Subquery</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">CharField</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="kn">from</span> <span class="nn">django.db.models.functions</span> <span class="kn">import</span> <span class="n">Concat</span><span class="p">,</span> <span class="n">Cast</span><span class="p">,</span> <span class="n">Round</span><span class="p">,</span> <span class="n">Length</span><span class="p">,</span> <span class="n">Upper</span><span class="p">,</span> <span class="n">Lower</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">connection</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="kn">from</span> <span class="nn">customer_db.models</span> <span class="kn">import</span> <span class="n">Provinces</span><span class="p">,</span> <span class="n">Patients</span><span class="p">,</span> <span class="n">Doctors</span><span class="p">,</span> <span class="n">Admissions</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">print_sql</span><span class="p">(</span><span class="n">queryset</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">formatted</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">queryset</span><span class="o">.</span><span class="n">query</span><span class="p">),</span> <span class="n">reindent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">admission_fields</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">&quot;patient_id&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">&quot;admission_date&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s2">&quot;discharge_date&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s2">&quot;diagnosis&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span> <span class="nc">NonAggrCount</span><span class="p">(</span><span class="n">Count</span><span class="p">):</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="sd">    This aggregation will not trigger a group by</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">contains_aggregate</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">class</span> <span class="nc">NonAggrSum</span><span class="p">(</span><span class="n">Sum</span><span class="p">):</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">contains_aggregate</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+<h2 id="medium-1">Medium 1</h2>
+<p>Show unique birth years from patients and order them by ascending.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Use YEAR(birth_date) for most databases</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">SELECT</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s2">  DISTINCT strftime(&#39;%Y&#39;, birth_date) birth_year</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s2">ORDER BY birth_year;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">birth_year</span><span class="o">=</span><span class="n">Cast</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;birth_date__year&quot;</span><span class="p">),</span> <span class="n">CharField</span><span class="p">()))</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;birth_year&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;birth_year&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT DISTINCT CAST(django_date_extract(year, &quot;patients&quot;.&quot;birth_date&quot;) AS text) AS &quot;birth_year&quot;
+FROM &quot;patients&quot;
+ORDER BY 1 ASC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   birth_year |
+|---:|-------------:|
+|  0 |         1975 |
+|  1 |         1976 |
+|  2 |         1977 |
+</code></pre></div>
+<h2 id="medium-2">Medium 2</h2>
+<p>Show unique first names from the patients table which only occurs once in the list.</p>
+<p>For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s2">SELECT first_name</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s2">GROUP BY first_name</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s2">HAVING COUNT(first_name) = 1</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">occurance</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">occurance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;
+FROM &quot;patients&quot;
+GROUP BY &quot;patients&quot;.&quot;first_name&quot;
+HAVING COUNT(&quot;patients&quot;.&quot;first_name&quot;) = 1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   |
+|---:|:-------------|
+|  0 | Abigail      |
+|  1 | Alicia       |
+|  2 | Allison      |
+</code></pre></div>
+<h2 id="medium-3">Medium 3</h2>
+<p>Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+We will do start and ends with 'n' and is at least 6 characters long.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="s2">  patient_id,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="s2">  first_name</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="s2">WHERE first_name LIKe &quot;n____%n&quot;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">first_name__regex</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;(?i)^n\w{4,}n$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="n">patient_id</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;,
+       &quot;patients&quot;.&quot;patient_id&quot; AS &quot;patient_id&quot;
+FROM &quot;patients&quot;
+WHERE &quot;patients&quot;.&quot;first_name&quot; REGEXP (?i)^n\w{4,}n$
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   |   patient_id |
+|---:|:-------------|-------------:|
+|  0 | Nathan       |           54 |
+|  1 | Nathan       |          100 |
+</code></pre></div>
+<h2 id="medium-4">Medium 4</h2>
+<p>Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+We will do Diabetes.
+Primary diagnosis is stored in the admissions table.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="s2">  p.patient_id,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="s2">  last_name</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="s2">FROM patients p</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="s2">  INNER JOIN admissions a ON p.patient_id = a.patient_id</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="s2">WHERE diagnosis = &#39;Diabetes&#39;</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">diagnosis</span><span class="o">=</span><span class="s2">&quot;Diabetes&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="s2">&quot;patient_id&quot;</span><span class="p">,</span> <span class="n">first_name</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;patient__first_name&quot;</span><span class="p">),</span> <span class="n">last_name</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;patient__last_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;patient_id&quot;,
+       &quot;patients&quot;.&quot;first_name&quot; AS &quot;first_name&quot;,
+       &quot;patients&quot;.&quot;last_name&quot; AS &quot;last_name&quot;
+FROM &quot;admissions&quot;
+INNER JOIN &quot;patients&quot; ON (&quot;admissions&quot;.&quot;patient_id&quot; = &quot;patients&quot;.&quot;patient_id&quot;)
+WHERE &quot;admissions&quot;.&quot;diagnosis&quot; = Diabetes
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Note the result of the ORM query in the next cell is equivalent to that of the last cell,</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># except for the ordering.</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s2">SELECT</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="s2">  p.patient_id,</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="s2">  last_name</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="s2">FROM patients p</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="s2">  INNER JOIN admissions a ON p.patient_id = a.patient_id</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="s2">WHERE diagnosis = &#39;Diabetes&#39;</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="s2">ORDER BY p.patient_id</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">diabetic_patients</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">diagnosis</span><span class="o">=</span><span class="s2">&quot;Diabetes&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">ormq1</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">id__in</span><span class="o">=</span><span class="n">diabetic_patients</span><span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="n">patient_id</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="p">)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq1</span><span class="p">)</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;,
+       &quot;patients&quot;.&quot;last_name&quot;,
+       &quot;patients&quot;.&quot;patient_id&quot; AS &quot;patient_id&quot;
+FROM &quot;patients&quot;
+WHERE &quot;patients&quot;.&quot;patient_id&quot; IN
+    (SELECT DISTINCT U0.&quot;patient_id&quot;
+     FROM &quot;admissions&quot; U0
+     WHERE U0.&quot;diagnosis&quot; = Diabetes)
+ORDER BY 3 ASC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   patient_id | first_name   | last_name   |
+|---:|-------------:|:-------------|:------------|
+|  0 |            6 | Gavin        | Bryant      |
+|  1 |           17 | Emily        | Tran        |
+|  2 |           27 | Allison      | Rogers      |
+</code></pre></div>
+<h2 id="medium-5">Medium 5</h2>
+<p>Display every patient's first_name.
+Order the list by the length of each name and then by alphbetically</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="s2">  first_name</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="s2">FROM patients p</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="s2">ORDER BY</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="s2">  LENGTH(first_name),</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="s2">  first_name;</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">),</span> <span class="s2">&quot;first_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="s2">&quot;first_name&quot;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;
+FROM &quot;patients&quot;
+ORDER BY LENGTH(&quot;patients&quot;.&quot;first_name&quot;) ASC, &quot;patients&quot;.&quot;first_name&quot; ASC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   |
+|---:|:-------------|
+|  0 | Eli          |
+|  1 | Eli          |
+|  2 | Eli          |
+</code></pre></div>
+<h2 id="medium-6">Medium 6</h2>
+<p>Show the total amount of male patients and the total amount of female patients in the patients table.
+Display the two results in the same row.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="s2">SELECT (</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="s2">    SELECT COUNT(gender)</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="s2">    FROM patients</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="s2">    WHERE gender = &#39;M&#39;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="s2">  ) AS male, (</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="s2">    SELECT COUNT(gender)</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="s2">    FROM patients</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="s2">    WHERE gender = &#39;F&#39;</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="s2">  ) AS female;</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">male_subquery</span><span class="p">,</span> <span class="n">female_subquery</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">_count&quot;</span><span class="p">:</span> <span class="n">Func</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;gender&quot;</span><span class="p">),</span> <span class="n">function</span><span class="o">=</span><span class="s2">&quot;COUNT&quot;</span><span class="p">)})</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">_count&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">]</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="p">]</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="n">male</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span><span class="n">male_subquery</span><span class="p">),</span> <span class="n">female</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span><span class="n">female_subquery</span><span class="p">)</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">)[:</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT
+  (SELECT COUNT(U0.&quot;gender&quot;) AS &quot;M_count&quot;
+   FROM &quot;patients&quot; U0
+   WHERE U0.&quot;gender&quot; = M) AS &quot;male&quot;,
+
+  (SELECT COUNT(U0.&quot;gender&quot;) AS &quot;F_count&quot;
+   FROM &quot;patients&quot; U0
+   WHERE U0.&quot;gender&quot; = F) AS &quot;female&quot;
+FROM &quot;patients&quot;
+LIMIT 1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="n">male</span><span class="o">=</span><span class="n">NonAggrSum</span><span class="p">(</span><span class="n">Case</span><span class="p">(</span><span class="n">When</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="mi">1</span><span class="p">))),</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="n">female</span><span class="o">=</span><span class="n">NonAggrSum</span><span class="p">(</span><span class="n">Case</span><span class="p">(</span><span class="n">When</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="mi">1</span><span class="p">))),</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT SUM(CASE
+               WHEN &quot;patients&quot;.&quot;gender&quot; = M THEN 1
+               ELSE NULL
+           END) AS &quot;male&quot;,
+       SUM(CASE
+               WHEN &quot;patients&quot;.&quot;gender&quot; = F THEN 1
+               ELSE NULL
+           END) AS &quot;female&quot;
+FROM &quot;patients&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   male |   female |
+|---:|-------:|---------:|
+|  0 |     50 |       51 |
+</code></pre></div>
+<h2 id="medium-7">Medium 7</h2>
+<p>Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="s2">  last_name,</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="s2">  allergies</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="s2">WHERE</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="s2">  allergies IN (&#39;Penicillin&#39;, &#39;Morphine&#39;)</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="s2">ORDER BY</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="s2">  allergies,</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="s2">  last_name;</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">allergies__in</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Penicillin&quot;</span><span class="p">,</span> <span class="s2">&quot;Morphine&quot;</span><span class="p">])</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="s2">&quot;allergies&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;allergies&quot;</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="p">)</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;,
+       &quot;patients&quot;.&quot;last_name&quot;,
+       &quot;patients&quot;.&quot;allergies&quot;
+FROM &quot;patients&quot;
+WHERE &quot;patients&quot;.&quot;allergies&quot; IN (Penicillin,
+                                 Morphine)
+ORDER BY &quot;patients&quot;.&quot;allergies&quot; ASC,
+         &quot;patients&quot;.&quot;first_name&quot; ASC,
+         &quot;patients&quot;.&quot;last_name&quot; ASC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   | last_name   | allergies   |
+|---:|:-------------|:------------|:------------|
+|  0 | Gavin        | Bryant      | Penicillin  |
+|  1 | Jeremy       | Kim         | Penicillin  |
+|  2 | Trevor       | Baker       | Penicillin  |
+</code></pre></div>
+<h2 id="medium-8">Medium 8</h2>
+<p>Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="s2">  patient_id,</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="s2">  diagnosis</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="s2">FROM admissions</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="s2">GROUP BY</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="s2">  patient_id,</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="s2">  diagnosis</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="s2">HAVING COUNT(*) &gt; 1</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">,</span> <span class="s2">&quot;diagnosis&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">))</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">count__gt</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">,</span> <span class="s2">&quot;diagnosis&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="p">)</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;patient_id&quot;,
+       &quot;admissions&quot;.&quot;diagnosis&quot;
+FROM &quot;admissions&quot;
+GROUP BY &quot;admissions&quot;.&quot;patient_id&quot;,
+         &quot;admissions&quot;.&quot;diagnosis&quot;
+HAVING COUNT(&quot;admissions&quot;.&quot;patient_id&quot;) &gt; 1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   patient_id | diagnosis   |
+|---:|-------------:|:------------|
+|  0 |            5 | Meningitis  |
+</code></pre></div>
+<h2 id="medium-9">Medium 9</h2>
+<p>Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="s2">  city,</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="s2">  COUNT(*) population</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="s2">GROUP BY city </span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="s2">ORDER BY population DESC, city</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-population&quot;</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="p">)</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;city&quot;,
+       COUNT(&quot;patients&quot;.&quot;patient_id&quot;) AS &quot;population&quot;
+FROM &quot;patients&quot;
+GROUP BY &quot;patients&quot;.&quot;city&quot;
+ORDER BY 2 DESC,
+         &quot;patients&quot;.&quot;city&quot; ASC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | city      |   population |
+|---:|:----------|-------------:|
+|  0 | Montreal  |           14 |
+|  1 | Calgary   |           13 |
+|  2 | Toronto   |           13 |
+|  3 | Vancouver |           13 |
+|  4 | Halifax   |           12 |
+|  5 | Ottawa    |           12 |
+|  6 | Victoria  |           12 |
+|  7 | Winnipeg  |           12 |
+</code></pre></div>
+<h2 id="medium-10">Medium 10</h2>
+<p>Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="s2">  last_name,</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="s2">  &#39;patient&#39; AS Role</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="s2">UNION ALL</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="s2">SELECT</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="s2">  last_name,</span>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="s2">  &#39;doctor&#39; AS Role</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="s2">FROM doctors;</span>
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;patient&quot;</span><span class="p">,</span> <span class="n">output_field</span><span class="o">=</span><span class="n">CharField</span><span class="p">()))</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="o">.</span><span class="n">union</span><span class="p">(</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>        <span class="n">Doctors</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="n">output_field</span><span class="o">=</span><span class="n">CharField</span><span class="p">()))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>            <span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>        <span class="p">),</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>        <span class="nb">all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>    <span class="p">)</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="p">)</span>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot; AS &quot;col1&quot;,
+       &quot;patients&quot;.&quot;last_name&quot; AS &quot;col2&quot;,
+       patient AS &quot;role&quot;
+FROM &quot;patients&quot;
+UNION ALL
+SELECT &quot;doctors&quot;.&quot;first_name&quot; AS &quot;col1&quot;,
+       &quot;doctors&quot;.&quot;last_name&quot; AS &quot;col2&quot;,
+       doctor AS &quot;role&quot;
+FROM &quot;doctors&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   | last_name   | role    |
+|---:|:-------------|:------------|:--------|
+|  0 | Cheryl       | Mason       | patient |
+|  1 | Jason        | Fleming     | patient |
+|  2 | Tiffany      | McDonald    | patient |
+</code></pre></div>
+<h2 id="medium-11">Medium 11</h2>
+<p>Show all allergies and their occurance ordered by occurance. Remove NULL values from query.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="s2">  allergies,</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="s2">  COUNT (*) AS total_occurance</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="s2">WHERE allergies IS NOT null</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="s2">GROUP BY allergies</span>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="s2">ORDER BY total_occurance DESC</span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;allergies&quot;</span><span class="p">)</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">allergies__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">total_occurance</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;allergies&quot;</span><span class="p">))</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-total_occurance&quot;</span><span class="p">)</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="p">)</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;allergies&quot;,
+       COUNT(&quot;patients&quot;.&quot;allergies&quot;) AS &quot;total_occurance&quot;
+FROM &quot;patients&quot;
+WHERE &quot;patients&quot;.&quot;allergies&quot; IS NOT NULL
+GROUP BY &quot;patients&quot;.&quot;allergies&quot;
+ORDER BY 2 DESC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | allergies   |   total_occurance |
+|---:|:------------|------------------:|
+|  0 | Pollen      |                15 |
+|  1 | Lactose     |                13 |
+|  2 | Sulfa drugs |                 8 |
+</code></pre></div>
+<h2 id="medium-12">Medium 12</h2>
+<p>Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># use YEAR(birth_date) if year function is available</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="s2">SELECT</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="s2">  last_name,</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="s2">  birth_date</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a><span class="s2">WHERE CAST(strftime(&#39;%Y&#39;, birth_date) AS INT) BETWEEN 1970 AND 1979</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="s2">ORDER BY birth_date</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">birth_date__year__gte</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">birth_date__year__lte</span><span class="o">=</span><span class="mi">1979</span><span class="p">)</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;birth_date&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="s2">&quot;birth_date&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="p">)</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;,
+       &quot;patients&quot;.&quot;last_name&quot;,
+       &quot;patients&quot;.&quot;birth_date&quot;
+FROM &quot;patients&quot;
+WHERE (&quot;patients&quot;.&quot;birth_date&quot; &gt;= 1970-01-01
+       AND &quot;patients&quot;.&quot;birth_date&quot; &lt;= 1979-12-31)
+ORDER BY &quot;patients&quot;.&quot;birth_date&quot; ASC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   | last_name   | birth_date   |
+|---:|:-------------|:------------|:-------------|
+|  0 | Jeremy       | Kim         | 1975-07-19   |
+|  1 | Samantha     | Garcia      | 1975-11-30   |
+|  2 | Olivia       | Li          | 1976-03-11   |
+</code></pre></div>
+<h2 id="medium-13">Medium 13</h2>
+<p>We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order
+EX: SMITH,jane</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="s2">   UPPER(last_name) || &#39;,&#39; || LOWER(first_name) AS full_name</span>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="s2">ORDER BY first_name DESC</span>
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="n">full_name</span><span class="o">=</span><span class="n">Concat</span><span class="p">(</span><span class="n">Upper</span><span class="p">(</span><span class="s2">&quot;last_name&quot;</span><span class="p">),</span> <span class="n">Value</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">),</span> <span class="n">Lower</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">))</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-first_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT COALESCE(UPPER(&quot;patients&quot;.&quot;last_name&quot;),) || COALESCE(COALESCE(,,) || COALESCE(LOWER(&quot;patients&quot;.&quot;first_name&quot;),),) AS &quot;full_name&quot;
+FROM &quot;patients&quot;
+ORDER BY &quot;patients&quot;.&quot;first_name&quot; DESC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | full_name      |
+|---:|:---------------|
+|  0 | NGUYEN,william |
+|  1 | LIU,victor     |
+|  2 | BAKER,trevor   |
+</code></pre></div>
+<h2 id="medium-14">Medium 14</h2>
+<p>Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+We will do 3000</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="s2">  province_id,</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="s2">  SUM(height) AS sum_height</span>
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="s2">GROUP BY province_id</span>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="s2">HAVING SUM(height) &gt; 3000;</span>
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;province_id&quot;</span><span class="p">)</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">sum_height</span><span class="o">=</span><span class="n">Sum</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">))</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">sum_height__gt</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;province_id&quot;</span><span class="p">,</span> <span class="s2">&quot;sum_height&quot;</span><span class="p">)</span>
+<a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="p">)</span>
+<a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;province_id&quot;,
+       SUM(&quot;patients&quot;.&quot;height&quot;) AS &quot;sum_height&quot;
+FROM &quot;patients&quot;
+GROUP BY &quot;patients&quot;.&quot;province_id&quot;
+HAVING SUM(&quot;patients&quot;.&quot;height&quot;) &gt; 3000
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | province_id   |   sum_height |
+|---:|:--------------|-------------:|
+|  0 | BC            |         4357 |
+|  1 | ON            |         4331 |
+</code></pre></div>
+<h2 id="medium-15">Medium 15</h2>
+<p>Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'.
+We will do Lee.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="s2">  (MAX(weight) - MIN(weight)) AS weight_dif</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="s2">WHERE last_name = &#39;Lee&#39;;</span>
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Lee&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>    <span class="n">weight_dif</span><span class="o">=</span><span class="n">Max</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">Min</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="p">)</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="c1"># print_sql(ormq)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Lee&quot;</span><span class="p">)</span>
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>        <span class="n">weight_dif</span><span class="o">=</span><span class="n">Func</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">),</span> <span class="n">function</span><span class="o">=</span><span class="s2">&quot;MAX&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">Func</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">),</span> <span class="n">function</span><span class="o">=</span><span class="s2">&quot;MIN&quot;</span><span class="p">)</span>
+<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>    <span class="p">)</span>
+<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;weight_dif&quot;</span><span class="p">)</span>
+<a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="p">)</span>
+<a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT (MAX(&quot;patients&quot;.&quot;weight&quot;) - MIN(&quot;patients&quot;.&quot;weight&quot;)) AS &quot;weight_dif&quot;
+FROM &quot;patients&quot;
+WHERE &quot;patients&quot;.&quot;last_name&quot; = Lee
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   weight_dif |
+|---:|-------------:|
+|  0 |           23 |
+</code></pre></div>
+<h2 id="medium-16">Medium 16</h2>
+<p>Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="s2">  CAST(strftime(&#39;</span><span class="si">%d</span><span class="s2">&#39;, admission_date) as INT) AS month_day,</span>
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a><span class="s2">  COUNT(patient_id) AS daily_admission</span>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="s2">FROM admissions</span>
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a><span class="s2">GROUP BY strftime(&#39;</span><span class="si">%d</span><span class="s2">&#39;, admission_date)</span>
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="s2">ORDER BY daily_admission DESC;</span>
+<a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">month_day</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;admission_date__day&quot;</span><span class="p">))</span>
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">daily_admission</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-daily_admission&quot;</span><span class="p">)</span>
+<a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="p">)</span>
+<a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT django_date_extract(day, &quot;admissions&quot;.&quot;admission_date&quot;) AS &quot;month_day&quot;,
+       COUNT(&quot;admissions&quot;.&quot;id&quot;) AS &quot;daily_admission&quot;
+FROM &quot;admissions&quot;
+GROUP BY 1
+ORDER BY 2 DESC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   month_day |   daily_admission |
+|---:|------------:|------------------:|
+|  0 |          28 |                 6 |
+|  1 |          18 |                 6 |
+|  2 |          17 |                 6 |
+</code></pre></div>
+<h2 id="medium-17">Medium 17</h2>
+<p>Show all columns for patient_id 54's most recent admission_date.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="s2">SELECT *</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="s2">FROM admissions</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="s2">WHERE patient_id = 54 AND admission_date = (</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="s2">    SELECT max(admission_date)</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="s2">    FROM admissions</span>
+<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="s2">    WHERE patient_id = 54</span>
+<a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a><span class="s2">  )</span>
+<a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    <span class="n">patient_id</span><span class="o">=</span><span class="mi">54</span><span class="p">,</span>
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="n">admission_date</span><span class="o">=</span><span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">patient_id</span><span class="o">=</span><span class="mi">54</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>        <span class="n">max_admission</span><span class="o">=</span><span class="n">Max</span><span class="p">(</span><span class="s2">&quot;admission_date&quot;</span><span class="p">)</span>
+<a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>    <span class="p">)[</span><span class="s2">&quot;max_admission&quot;</span><span class="p">],</span>
+<a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="o">*</span><span class="n">admission_fields</span><span class="p">)</span>
+<a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-58-8" name="__codelineno-58-8" href="#__codelineno-58-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;id&quot;,
+       &quot;admissions&quot;.&quot;patient_id&quot;,
+       &quot;admissions&quot;.&quot;admission_date&quot;,
+       &quot;admissions&quot;.&quot;discharge_date&quot;,
+       &quot;admissions&quot;.&quot;diagnosis&quot;,
+       &quot;admissions&quot;.&quot;attending_doctor_id&quot;
+FROM &quot;admissions&quot;
+WHERE (&quot;admissions&quot;.&quot;admission_date&quot; = 2022-06-02
+       AND &quot;admissions&quot;.&quot;patient_id&quot; = 54)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>    <span class="n">patient_id</span><span class="o">=</span><span class="mi">54</span><span class="p">,</span>
+<a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>    <span class="n">admission_date</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span>
+<a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>        <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">patient_id</span><span class="o">=</span><span class="mi">54</span><span class="p">)</span>
+<a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a>        <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">max_admission</span><span class="o">=</span><span class="n">Func</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;admission_date&quot;</span><span class="p">),</span> <span class="n">function</span><span class="o">=</span><span class="s2">&quot;Max&quot;</span><span class="p">))</span>
+<a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a>        <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;max_admission&quot;</span><span class="p">)</span>
+<a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a>    <span class="p">),</span>
+<a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="o">*</span><span class="n">admission_fields</span><span class="p">)</span>
+<a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a>
+<a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a>
+<a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-59-12" name="__codelineno-59-12" href="#__codelineno-59-12"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;id&quot;,
+       &quot;admissions&quot;.&quot;patient_id&quot;,
+       &quot;admissions&quot;.&quot;admission_date&quot;,
+       &quot;admissions&quot;.&quot;discharge_date&quot;,
+       &quot;admissions&quot;.&quot;diagnosis&quot;,
+       &quot;admissions&quot;.&quot;attending_doctor_id&quot;
+FROM &quot;admissions&quot;
+WHERE (&quot;admissions&quot;.&quot;admission_date&quot; =
+         (SELECT Max(U0.&quot;admission_date&quot;) AS &quot;max_admission&quot;
+          FROM &quot;admissions&quot; U0
+          WHERE U0.&quot;patient_id&quot; = 54)
+       AND &quot;admissions&quot;.&quot;patient_id&quot; = 54)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">patient_id</span><span class="o">=</span><span class="mi">54</span><span class="p">)</span>
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-admission_date&quot;</span><span class="p">)[:</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="o">*</span><span class="n">admission_fields</span><span class="p">)</span>
+<a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="p">)</span>
+<a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;id&quot;,
+       &quot;admissions&quot;.&quot;patient_id&quot;,
+       &quot;admissions&quot;.&quot;admission_date&quot;,
+       &quot;admissions&quot;.&quot;discharge_date&quot;,
+       &quot;admissions&quot;.&quot;diagnosis&quot;,
+       &quot;admissions&quot;.&quot;attending_doctor_id&quot;
+FROM &quot;admissions&quot;
+WHERE &quot;admissions&quot;.&quot;patient_id&quot; = 54
+ORDER BY &quot;admissions&quot;.&quot;admission_date&quot; DESC
+LIMIT 1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   id |   patient_id | admission_date   | discharge_date   | diagnosis   |   attending_doctor_id |
+|---:|-----:|-------------:|:-----------------|:-----------------|:------------|----------------------:|
+|  0 |  154 |           54 | 2022-06-02       | 2022-06-06       | Migraine    |                    11 |
+</code></pre></div>
+<h2 id="medium-18">Medium 18</h2>
+<p>Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="s2">  patient_id,</span>
+<a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="s2">  attending_doctor_id,</span>
+<a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a><span class="s2">  diagnosis</span>
+<a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a><span class="s2">FROM admissions</span>
+<a id="__codelineno-62-7" name="__codelineno-62-7" href="#__codelineno-62-7"></a><span class="s2">WHERE</span>
+<a id="__codelineno-62-8" name="__codelineno-62-8" href="#__codelineno-62-8"></a><span class="s2">  (</span>
+<a id="__codelineno-62-9" name="__codelineno-62-9" href="#__codelineno-62-9"></a><span class="s2">    patient_id % 2 = 1</span>
+<a id="__codelineno-62-10" name="__codelineno-62-10" href="#__codelineno-62-10"></a><span class="s2">    and attending_doctor_id IN (1, 5, 19)</span>
+<a id="__codelineno-62-11" name="__codelineno-62-11" href="#__codelineno-62-11"></a><span class="s2">  )</span>
+<a id="__codelineno-62-12" name="__codelineno-62-12" href="#__codelineno-62-12"></a><span class="s2">  OR (</span>
+<a id="__codelineno-62-13" name="__codelineno-62-13" href="#__codelineno-62-13"></a><span class="s2">    CAST(attending_doctor_id AS varchar) LIKE &quot;</span><span class="si">%2%</span><span class="s2">&quot;</span>
+<a id="__codelineno-62-14" name="__codelineno-62-14" href="#__codelineno-62-14"></a><span class="s2">    AND length(CAST(patient_id AS VARCHAR)) = 2</span>
+<a id="__codelineno-62-15" name="__codelineno-62-15" href="#__codelineno-62-15"></a><span class="s2">  )</span>
+<a id="__codelineno-62-16" name="__codelineno-62-16" href="#__codelineno-62-16"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-62-17" name="__codelineno-62-17" href="#__codelineno-62-17"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="n">f1</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="n">attending_doctor_id__in</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="n">pi_mod</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="n">f2</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="n">adi_str__icontains</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">pi_len</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>        <span class="n">pi_mod</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>        <span class="n">adi_str</span><span class="o">=</span><span class="n">Cast</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">),</span> <span class="n">CharField</span><span class="p">()),</span>
+<a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a>        <span class="n">pi_len</span><span class="o">=</span><span class="n">Length</span><span class="p">(</span><span class="n">Cast</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">),</span> <span class="n">CharField</span><span class="p">())),</span>
+<a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>    <span class="p">)</span>
+<a id="__codelineno-63-10" name="__codelineno-63-10" href="#__codelineno-63-10"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f1</span> <span class="o">|</span> <span class="n">f2</span><span class="p">)</span>
+<a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">,</span> <span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">,</span> <span class="s2">&quot;diagnosis&quot;</span><span class="p">)</span>
+<a id="__codelineno-63-12" name="__codelineno-63-12" href="#__codelineno-63-12"></a><span class="p">)</span>
+<a id="__codelineno-63-13" name="__codelineno-63-13" href="#__codelineno-63-13"></a>
+<a id="__codelineno-63-14" name="__codelineno-63-14" href="#__codelineno-63-14"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-63-15" name="__codelineno-63-15" href="#__codelineno-63-15"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;patient_id&quot;,
+       &quot;admissions&quot;.&quot;attending_doctor_id&quot;,
+       &quot;admissions&quot;.&quot;diagnosis&quot;
+FROM &quot;admissions&quot;
+WHERE ((&quot;admissions&quot;.&quot;attending_doctor_id&quot; IN (1,
+                                               5,
+                                               19)
+        AND (&quot;admissions&quot;.&quot;patient_id&quot; % 2) = 1)
+       OR (CAST(&quot;admissions&quot;.&quot;attending_doctor_id&quot; AS text) LIKE %2% ESCAPE &#39;\&#39;
+           AND LENGTH(CAST(&quot;admissions&quot;.&quot;patient_id&quot; AS text)) = 2))
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   patient_id |   attending_doctor_id | diagnosis   |
+|---:|-------------:|----------------------:|:------------|
+|  0 |           14 |                    20 | Arthritis   |
+|  1 |           15 |                     2 | Bronchitis  |
+|  2 |           25 |                    20 | Asthma      |
+</code></pre></div>
+<h2 id="medium-19">Medium 19</h2>
+<p>Show first_name, last_name, and the total number of admissions attended for each doctor.</p>
+<p>Every admission has been attended by a doctor.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a><span class="s2">  last_name,</span>
+<a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a><span class="s2">  COUNT(*) AS patient_count</span>
+<a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a><span class="s2">FROM admissions</span>
+<a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a><span class="s2">  JOIN doctors ON attending_doctor_id = doctor_id</span>
+<a id="__codelineno-65-8" name="__codelineno-65-8" href="#__codelineno-65-8"></a><span class="s2">GROUP BY attending_doctor_id</span>
+<a id="__codelineno-65-9" name="__codelineno-65-9" href="#__codelineno-65-9"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-65-10" name="__codelineno-65-10" href="#__codelineno-65-10"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">)</span>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">patient_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">))</span>
+<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>        <span class="s2">&quot;patient_count&quot;</span><span class="p">,</span>
+<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>        <span class="n">first_name</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id__first_name&quot;</span><span class="p">),</span>
+<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a>        <span class="n">last_name</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id__last_name&quot;</span><span class="p">),</span>
+<a id="__codelineno-66-8" name="__codelineno-66-8" href="#__codelineno-66-8"></a>    <span class="p">)</span>
+<a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a><span class="p">)</span>
+<a id="__codelineno-66-10" name="__codelineno-66-10" href="#__codelineno-66-10"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-66-11" name="__codelineno-66-11" href="#__codelineno-66-11"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT COUNT(&quot;admissions&quot;.&quot;attending_doctor_id&quot;) AS &quot;patient_count&quot;,
+       &quot;doctors&quot;.&quot;first_name&quot; AS &quot;first_name&quot;,
+       &quot;doctors&quot;.&quot;last_name&quot; AS &quot;last_name&quot;
+FROM &quot;admissions&quot;
+INNER JOIN &quot;doctors&quot; ON (&quot;admissions&quot;.&quot;attending_doctor_id&quot; = &quot;doctors&quot;.&quot;doctor_id&quot;)
+GROUP BY &quot;admissions&quot;.&quot;attending_doctor_id&quot;,
+         2,
+         3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   patient_count | first_name   | last_name   |
+|---:|----------------:|:-------------|:------------|
+|  0 |               8 | Maggie       | Chen        |
+|  1 |               8 | Karen        | Wong        |
+|  2 |               7 | Samuel       | Nguyen      |
+</code></pre></div>
+<h2 id="medium-20">Medium 20</h2>
+<p>For each doctor, display their id, full name, and the first and last admission date they attended.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a><span class="s2">  doctor_id,</span>
+<a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a><span class="s2">  first_name || &#39; &#39; || last_name AS full_name,</span>
+<a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a><span class="s2">  MIN(admission_date) AS min_admission,</span>
+<a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a><span class="s2">  MAX(admission_date) AS max_admission</span>
+<a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a><span class="s2">FROM doctors</span>
+<a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a><span class="s2">  JOIN admissions ON attending_doctor_id = doctor_id</span>
+<a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a><span class="s2">GROUP BY doctor_id</span>
+<a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>    <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">)</span>
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>        <span class="n">min_admission</span><span class="o">=</span><span class="n">Cast</span><span class="p">(</span><span class="n">Min</span><span class="p">(</span><span class="s2">&quot;admission_date&quot;</span><span class="p">),</span> <span class="n">CharField</span><span class="p">()),</span>
+<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>        <span class="n">max_admission</span><span class="o">=</span><span class="n">Cast</span><span class="p">(</span><span class="n">Max</span><span class="p">(</span><span class="s2">&quot;admission_date&quot;</span><span class="p">),</span> <span class="n">CharField</span><span class="p">()),</span>
+<a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a>    <span class="p">)</span>
+<a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a>        <span class="s2">&quot;min_admission&quot;</span><span class="p">,</span>
+<a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a>        <span class="s2">&quot;max_admission&quot;</span><span class="p">,</span>
+<a id="__codelineno-69-10" name="__codelineno-69-10" href="#__codelineno-69-10"></a>        <span class="n">doctor_id</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id&quot;</span><span class="p">),</span>
+<a id="__codelineno-69-11" name="__codelineno-69-11" href="#__codelineno-69-11"></a>        <span class="n">full_name</span><span class="o">=</span><span class="n">Concat</span><span class="p">(</span>
+<a id="__codelineno-69-12" name="__codelineno-69-12" href="#__codelineno-69-12"></a>            <span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id__first_name&quot;</span><span class="p">),</span>
+<a id="__codelineno-69-13" name="__codelineno-69-13" href="#__codelineno-69-13"></a>            <span class="n">Value</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span>
+<a id="__codelineno-69-14" name="__codelineno-69-14" href="#__codelineno-69-14"></a>            <span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor_id__last_name&quot;</span><span class="p">),</span>
+<a id="__codelineno-69-15" name="__codelineno-69-15" href="#__codelineno-69-15"></a>        <span class="p">),</span>
+<a id="__codelineno-69-16" name="__codelineno-69-16" href="#__codelineno-69-16"></a>    <span class="p">)</span>
+<a id="__codelineno-69-17" name="__codelineno-69-17" href="#__codelineno-69-17"></a><span class="p">)</span>
+<a id="__codelineno-69-18" name="__codelineno-69-18" href="#__codelineno-69-18"></a>
+<a id="__codelineno-69-19" name="__codelineno-69-19" href="#__codelineno-69-19"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-69-20" name="__codelineno-69-20" href="#__codelineno-69-20"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT CAST(MIN(&quot;admissions&quot;.&quot;admission_date&quot;) AS text) AS &quot;min_admission&quot;,
+       CAST(MAX(&quot;admissions&quot;.&quot;admission_date&quot;) AS text) AS &quot;max_admission&quot;,
+       &quot;admissions&quot;.&quot;attending_doctor_id&quot; AS &quot;doctor_id&quot;,
+       COALESCE(&quot;doctors&quot;.&quot;first_name&quot;,) || COALESCE(COALESCE(,) || COALESCE(&quot;doctors&quot;.&quot;last_name&quot;,),) AS &quot;full_name&quot;
+FROM &quot;admissions&quot;
+INNER JOIN &quot;doctors&quot; ON (&quot;admissions&quot;.&quot;attending_doctor_id&quot; = &quot;doctors&quot;.&quot;doctor_id&quot;)
+GROUP BY 3,
+         4
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | min_admission   | max_admission   |   doctor_id | full_name     |
+|---:|:----------------|:----------------|------------:|:--------------|
+|  0 | 2022-01-08      | 2022-06-11      |           1 | Maggie Chen   |
+|  1 | 2022-01-15      | 2022-06-18      |           2 | Karen Wong    |
+|  2 | 2022-01-01      | 2022-05-27      |           3 | Samuel Nguyen |
+</code></pre></div>
+<h2 id="medium-21">Medium 21</h2>
+<p>Display the total amount of patients for each province. Order by descending.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a><span class="s2">  pn.province_name,</span>
+<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a><span class="s2">  count(patient_id) population</span>
+<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a><span class="s2">FROM patients p</span>
+<a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a><span class="s2">  JOIN province_names pn ON p.province_id = pn.province_id</span>
+<a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a><span class="s2">GROUP BY pn.province_id</span>
+<a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a><span class="s2">ORDER BY population desc</span>
+<a id="__codelineno-71-9" name="__codelineno-71-9" href="#__codelineno-71-9"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-71-10" name="__codelineno-71-10" href="#__codelineno-71-10"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;province&quot;</span><span class="p">)</span>
+<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;province&quot;</span><span class="p">))</span>
+<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">province__name__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a>    <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s2">&quot;-population&quot;</span><span class="p">)</span>
+<a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a>    <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">province_name</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;province__name&quot;</span><span class="p">))</span>
+<a id="__codelineno-72-7" name="__codelineno-72-7" href="#__codelineno-72-7"></a><span class="p">)</span>
+<a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a>
+<a id="__codelineno-72-9" name="__codelineno-72-9" href="#__codelineno-72-9"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-72-10" name="__codelineno-72-10" href="#__codelineno-72-10"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT COUNT(&quot;patients&quot;.&quot;province_id&quot;) AS &quot;population&quot;,
+       &quot;province_names&quot;.&quot;province_name&quot; AS &quot;province_name&quot;
+FROM &quot;patients&quot;
+INNER JOIN &quot;province_names&quot; ON (&quot;patients&quot;.&quot;province_id&quot; = &quot;province_names&quot;.&quot;province_id&quot;)
+WHERE &quot;province_names&quot;.&quot;province_name&quot; IS NOT NULL
+GROUP BY &quot;patients&quot;.&quot;province_id&quot;,
+         2
+ORDER BY 1 DESC
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   population | province_name    |
+|---:|-------------:|:-----------------|
+|  0 |           25 | British Columbia |
+|  1 |           25 | Ontario          |
+|  2 |           14 | Quebec           |
+|  3 |           13 | Alberta          |
+|  4 |           12 | Manitoba         |
+|  5 |           12 | Nova Scotia      |
+</code></pre></div>
+<h2 id="medium-22">Medium 22</h2>
+<p>For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a><span class="s2">  p.first_name || &#39; &#39; || p.last_name AS patient_name,</span>
+<a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a><span class="s2">  diagnosis,</span>
+<a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a><span class="s2">  d.first_name || &#39; &#39; || d.last_name AS doctor_name</span>
+<a id="__codelineno-74-6" name="__codelineno-74-6" href="#__codelineno-74-6"></a><span class="s2">FROM patients p</span>
+<a id="__codelineno-74-7" name="__codelineno-74-7" href="#__codelineno-74-7"></a><span class="s2">  JOIN admissions a ON p.patient_id = a.patient_id</span>
+<a id="__codelineno-74-8" name="__codelineno-74-8" href="#__codelineno-74-8"></a><span class="s2">  JOIN doctors d ON a.attending_doctor_id = d.doctor_id</span>
+<a id="__codelineno-74-9" name="__codelineno-74-9" href="#__codelineno-74-9"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-74-10" name="__codelineno-74-10" href="#__codelineno-74-10"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="s2">&quot;diagnosis&quot;</span><span class="p">,</span>
+<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="n">patient_name</span><span class="o">=</span><span class="n">Concat</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;patient__first_name&quot;</span><span class="p">),</span> <span class="n">Value</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;patient__last_name&quot;</span><span class="p">)),</span>
+<a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>    <span class="n">doctor_name</span><span class="o">=</span><span class="n">Concat</span><span class="p">(</span>
+<a id="__codelineno-75-5" name="__codelineno-75-5" href="#__codelineno-75-5"></a>        <span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor__first_name&quot;</span><span class="p">),</span> <span class="n">Value</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;attending_doctor__last_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-75-6" name="__codelineno-75-6" href="#__codelineno-75-6"></a>    <span class="p">),</span>
+<a id="__codelineno-75-7" name="__codelineno-75-7" href="#__codelineno-75-7"></a><span class="p">)</span>
+<a id="__codelineno-75-8" name="__codelineno-75-8" href="#__codelineno-75-8"></a>
+<a id="__codelineno-75-9" name="__codelineno-75-9" href="#__codelineno-75-9"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-75-10" name="__codelineno-75-10" href="#__codelineno-75-10"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;admissions&quot;.&quot;diagnosis&quot;,
+       COALESCE(&quot;patients&quot;.&quot;first_name&quot;,) || COALESCE(COALESCE(,) || COALESCE(&quot;patients&quot;.&quot;last_name&quot;,),) AS &quot;patient_name&quot;,
+       COALESCE(&quot;doctors&quot;.&quot;first_name&quot;,) || COALESCE(COALESCE(,) || COALESCE(&quot;doctors&quot;.&quot;last_name&quot;,),) AS &quot;doctor_name&quot;
+FROM &quot;admissions&quot;
+INNER JOIN &quot;patients&quot; ON (&quot;admissions&quot;.&quot;patient_id&quot; = &quot;patients&quot;.&quot;patient_id&quot;)
+INNER JOIN &quot;doctors&quot; ON (&quot;admissions&quot;.&quot;attending_doctor_id&quot; = &quot;doctors&quot;.&quot;doctor_id&quot;)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | diagnosis   | patient_name     | doctor_name     |
+|---:|:------------|:-----------------|:----------------|
+|  0 | Bronchitis  | Cheryl Mason     | Samuel Nguyen   |
+|  1 | Migraine    | Jason Fleming    | Lisa Tran       |
+|  2 | Pneumonia   | Tiffany McDonald | Catherine Cheng |
+</code></pre></div>
+<h2 id="medium-23">Medium 23</h2>
+<p>display the number of duplicate patients based on their first_name and last_name.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="c1"># use YEAR(birth_date) if year function is available</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a><span class="s2">SELECT</span>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a><span class="s2">  last_name,</span>
+<a id="__codelineno-77-6" name="__codelineno-77-6" href="#__codelineno-77-6"></a><span class="s2">  count(*) duplicates</span>
+<a id="__codelineno-77-7" name="__codelineno-77-7" href="#__codelineno-77-7"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-77-8" name="__codelineno-77-8" href="#__codelineno-77-8"></a><span class="s2">GROUP BY</span>
+<a id="__codelineno-77-9" name="__codelineno-77-9" href="#__codelineno-77-9"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-77-10" name="__codelineno-77-10" href="#__codelineno-77-10"></a><span class="s2">  last_name</span>
+<a id="__codelineno-77-11" name="__codelineno-77-11" href="#__codelineno-77-11"></a><span class="s2">HAVING COUNT(*) &gt; 1</span>
+<a id="__codelineno-77-12" name="__codelineno-77-12" href="#__codelineno-77-12"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-77-13" name="__codelineno-77-13" href="#__codelineno-77-13"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">)</span>
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">duplicates</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">duplicates__gt</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a><span class="p">)</span>
+<a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a>
+<a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;,
+       &quot;patients&quot;.&quot;last_name&quot;,
+       COUNT(&quot;patients&quot;.&quot;patient_id&quot;) AS &quot;duplicates&quot;
+FROM &quot;patients&quot;
+GROUP BY &quot;patients&quot;.&quot;first_name&quot;,
+         &quot;patients&quot;.&quot;last_name&quot;
+HAVING COUNT(&quot;patients&quot;.&quot;patient_id&quot;) &gt; 1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | first_name   | last_name   |   duplicates |
+|---:|:-------------|:------------|-------------:|
+|  0 | Emma         | Gagnon      |            2 |
+|  1 | Isaac        | Nguyen      |            2 |
+|  2 | Nora         | Singh       |            2 |
+</code></pre></div>
+<h2 id="medium-24">Medium 24</h2>
+<p>Display patient's full name,
+height in the units feet rounded to 1 decimal,
+weight in the unit pounds rounded to 0 decimals,
+birth_date,
+gender non abbreviated.</p>
+<p>Convert CM to feet by dividing by 30.48.
+Convert KG to pounds by multiplying by 2.205.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a><span class="s2">  first_name || &#39; &#39; || last_name AS full_name,</span>
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a><span class="s2">  ROUND(height / 30.48, 1) AS height_inc,</span>
+<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a><span class="s2">  ROUND(weight * 2.205, 0) AS weight_pound,</span>
+<a id="__codelineno-80-6" name="__codelineno-80-6" href="#__codelineno-80-6"></a><span class="s2">  birth_date,</span>
+<a id="__codelineno-80-7" name="__codelineno-80-7" href="#__codelineno-80-7"></a><span class="s2">  CASE</span>
+<a id="__codelineno-80-8" name="__codelineno-80-8" href="#__codelineno-80-8"></a><span class="s2">    WHEN gender = &#39;M&#39; THEN &#39;Male&#39;</span>
+<a id="__codelineno-80-9" name="__codelineno-80-9" href="#__codelineno-80-9"></a><span class="s2">    WHEN gender = &#39;F&#39; THEN &#39;Female&#39;</span>
+<a id="__codelineno-80-10" name="__codelineno-80-10" href="#__codelineno-80-10"></a><span class="s2">  END AS gender_full</span>
+<a id="__codelineno-80-11" name="__codelineno-80-11" href="#__codelineno-80-11"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-80-12" name="__codelineno-80-12" href="#__codelineno-80-12"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-80-13" name="__codelineno-80-13" href="#__codelineno-80-13"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>    <span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
+<a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>    <span class="n">full_name</span><span class="o">=</span><span class="n">Concat</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">),</span> <span class="n">Value</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;last_name&quot;</span><span class="p">)),</span>
+<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a>    <span class="n">height_inc</span><span class="o">=</span><span class="n">Round</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">30.48</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-81-5" name="__codelineno-81-5" href="#__codelineno-81-5"></a>    <span class="n">weight_pound</span><span class="o">=</span><span class="n">Round</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.205</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-81-6" name="__codelineno-81-6" href="#__codelineno-81-6"></a>    <span class="n">gender_full</span><span class="o">=</span><span class="n">Case</span><span class="p">(</span>
+<a id="__codelineno-81-7" name="__codelineno-81-7" href="#__codelineno-81-7"></a>        <span class="n">When</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;Male&quot;</span><span class="p">)),</span> <span class="n">When</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;Female&quot;</span><span class="p">))</span>
+<a id="__codelineno-81-8" name="__codelineno-81-8" href="#__codelineno-81-8"></a>    <span class="p">),</span>
+<a id="__codelineno-81-9" name="__codelineno-81-9" href="#__codelineno-81-9"></a><span class="p">)</span>
+<a id="__codelineno-81-10" name="__codelineno-81-10" href="#__codelineno-81-10"></a>
+<a id="__codelineno-81-11" name="__codelineno-81-11" href="#__codelineno-81-11"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-81-12" name="__codelineno-81-12" href="#__codelineno-81-12"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;birth_date&quot;,
+       COALESCE(&quot;patients&quot;.&quot;first_name&quot;,) || COALESCE(COALESCE(,) || COALESCE(&quot;patients&quot;.&quot;last_name&quot;,),) AS &quot;full_name&quot;,
+       ROUND((&quot;patients&quot;.&quot;height&quot; / 30.48), 1) AS &quot;height_inc&quot;,
+       ROUND((&quot;patients&quot;.&quot;weight&quot; * 2.205), 0) AS &quot;weight_pound&quot;,
+       CASE
+           WHEN &quot;patients&quot;.&quot;gender&quot; = M THEN Male
+           WHEN &quot;patients&quot;.&quot;gender&quot; = F THEN Female
+           ELSE NULL
+       END AS &quot;gender_full&quot;
+FROM &quot;patients&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">ormq</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    | birth_date   | full_name        |   height_inc |   weight_pound | gender_full   |
+|---:|:-------------|:-----------------|-------------:|---------------:|:--------------|
+|  0 | 1978-05-14   | Cheryl Mason     |          5.6 |            143 | Female        |
+|  1 | 1990-08-02   | Jason Fleming    |          6.1 |            176 | Male          |
+|  2 | 1985-03-27   | Tiffany McDonald |          5.1 |            128 | Female        |
+</code></pre></div>
+<h2 id="medium-25">Medium 25</h2>
+<p>Show patient_id, first_name, last_name from patients whose does not have any records in the admissions table. (Their patient_id does not exist in any admissions.patient_id rows.)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="n">qstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a><span class="s2">SELECT</span>
+<a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a><span class="s2">  patient_id,</span>
+<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a><span class="s2">  first_name,</span>
+<a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a><span class="s2">  last_name</span>
+<a id="__codelineno-83-6" name="__codelineno-83-6" href="#__codelineno-83-6"></a><span class="s2">FROM patients</span>
+<a id="__codelineno-83-7" name="__codelineno-83-7" href="#__codelineno-83-7"></a><span class="s2">WHERE patient_id NOT IN (</span>
+<a id="__codelineno-83-8" name="__codelineno-83-8" href="#__codelineno-83-8"></a><span class="s2">    SELECT patient_id</span>
+<a id="__codelineno-83-9" name="__codelineno-83-9" href="#__codelineno-83-9"></a><span class="s2">    FROM admissions</span>
+<a id="__codelineno-83-10" name="__codelineno-83-10" href="#__codelineno-83-10"></a><span class="s2">  )</span>
+<a id="__codelineno-83-11" name="__codelineno-83-11" href="#__codelineno-83-11"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-83-12" name="__codelineno-83-12" href="#__codelineno-83-12"></a><span class="n">sqlq</span> <span class="o">=</span> <span class="n">sql_raw</span><span class="p">(</span><span class="n">qstr</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="n">ormq</span> <span class="o">=</span> <span class="n">Patients</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>    <span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">id__in</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span><span class="n">Admissions</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">)))</span>
+<a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span>
+<a id="__codelineno-84-4" name="__codelineno-84-4" href="#__codelineno-84-4"></a>    <span class="s2">&quot;first_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-84-5" name="__codelineno-84-5" href="#__codelineno-84-5"></a>    <span class="s2">&quot;last_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-84-6" name="__codelineno-84-6" href="#__codelineno-84-6"></a>    <span class="n">patient_id</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
+<a id="__codelineno-84-7" name="__codelineno-84-7" href="#__codelineno-84-7"></a><span class="p">)</span>
+<a id="__codelineno-84-8" name="__codelineno-84-8" href="#__codelineno-84-8"></a>
+<a id="__codelineno-84-9" name="__codelineno-84-9" href="#__codelineno-84-9"></a><span class="n">equal</span><span class="p">(</span><span class="n">sqlq</span><span class="p">,</span> <span class="n">ormq</span><span class="p">)</span>
+<a id="__codelineno-84-10" name="__codelineno-84-10" href="#__codelineno-84-10"></a><span class="n">print_sql</span><span class="p">(</span><span class="n">ormq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Equal ✔️
+SELECT &quot;patients&quot;.&quot;first_name&quot;,
+       &quot;patients&quot;.&quot;last_name&quot;,
+       &quot;patients&quot;.&quot;patient_id&quot; AS &quot;patient_id&quot;
+FROM &quot;patients&quot;
+WHERE NOT (&quot;patients&quot;.&quot;patient_id&quot; IN
+             (SELECT U0.&quot;patient_id&quot;
+              FROM &quot;admissions&quot; U0))
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="n">orm_to_df</span><span class="p">(</span><span class="n">sqlq</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>|    |   patient_id | first_name   | last_name   |
+|---:|-------------:|:-------------|:------------|
+|  0 |          101 | Edward       | Kenway      |
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Md Julkarnaeen
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/julkaar9/walkalongs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+    
+  </body>
+</html>
